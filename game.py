@@ -59,7 +59,8 @@ class Game(Widget):
         self.add_widget(self.floor)  # i wyswietla
         self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(0, 0)))
         self.add_widget(self.treeman)
-        self.elephant = Elephant(pos=(rnd.randint(-100, 0), rnd.randint(0, 0)))
+        self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(0, 0)))
+        self.add_widget(self.elephant)
         #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
 
         self.game_over = False
@@ -81,10 +82,13 @@ class Game(Widget):
             self.treeman.update()
 
 
+        if self.game_event_counter >= 500:
+            self.elephant.update()
+
 
         self.hero_hplabel.text =  'hp'+str(self.hero.hero_hp)
         self.hero_explabel.text='exp'+str(self.hero.experience)
-        self.elephant.update()
+
 
         self.background.update()#updateuje background- kaze mu wykonywac poruszanie
         self.hero.update() # updateuje bohaterac
@@ -96,6 +100,7 @@ class Game(Widget):
         self.tile_1.update()#updateuje gruba tile
         self.left_death.update() #updateuje smierc z lewej strony
         self.left_dark.update()  # updateuje erasera
+
 
 
 
@@ -179,13 +184,15 @@ class Game(Widget):
         if self.treeman.collide_widget(self.hero) and self.treeman.treeman_dead == False:#jesli treeman dotknie hero
             self.treeman.treeman_collision = True#odpala animacje ataku treemana
             self.hero.hero_hp -= self.treeman.treeman_sila# #odcina hp u hero
-        else:self.treeman.treeman_collision = False#wylacza animacje ataku i treemana
+        else:
+            self.treeman.treeman_collision = False#wylacza animacje ataku i treemana
         #if self.treeman.treeman_dead == False:
 
         if self.elephant.collide_widget(self.hero) and self.elephant.elephant_dead == False:#jesli treeman dotknie hero
             self.elephant.elephant_collision = True#odpala animacje ataku treemana
             self.hero.hero_hp -= self.elephant.elephant_sila# #odcina hp u hero
-        else:self.elephant.elephant_collision = False#wylacza animacje ataku i treemana
+        else:
+            self.elephant.elephant_collision = False#wylacza animacje ataku i treemana
         #if self.treeman.treeman_dead == False:
 
         #MONSTER DEATH(MOZE TUTAJ DROP?)

@@ -25,7 +25,7 @@ class Treeman(Sprite):
         self.y_border_touched = False #bool obslugujacy dolna i gorna granice
         self.x_border_touched = False #bool obslugujacy prawa i lewa granice
         self.treeman_hp = 100
-        self.treeman_sila = 16
+        self.treeman_sila = 2
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
     def update(self):  # apdejt klasy
@@ -81,16 +81,19 @@ class Treeman(Sprite):
 
 class Elephant(Sprite):
     def __init__(self, pos):  # przywoluje w konstruktorze pozycje
-        super(Elephant, self).__init__(source='atlas://img/traba_anim/eleh-attack3', pos=pos)
+        super(Elephant, self).__init__(source='atlas://img/traba_anim/eleh-attack1', pos=pos)
         self.attack_animation = ['atlas://img/traba_anim/eleh-attack1', 'atlas://img/traba_anim/eleh-attack2',
                                  'atlas://img/traba_anim/eleh-attack3', 'atlas://img/traba_anim/eleh-attack4',
                                  'atlas://img/traba_anim/eleh-attack5', 'atlas://img/traba_anim/eleh-attack6',
                                  'atlas://img/traba_anim/eleh-attack7', 'atlas://img/traba_anim/eleh-attack8',
-                                 'atlas://img/traba_anim/eleh-attack9', 'atlas://img/traba_anim/eleh-attack10']
+                                 'atlas://img/traba_anim/eleh-attack9']
         self.death_animation = ['atlas://img/traba_anim/eleh-death1', 'atlas://img/traba_anim/eleh-death2',
-                                'atlas://img/traba_anim/eleh-death3', 'atlas://img/traba_anim/eleh-death4']
+                                'atlas://img/traba_anim/eleh-death3', 'atlas://img/traba_anim/eleh-death4',
+                                'atlas://img/traba_anim/eleh-death5']
         self.run_animation = ['atlas://img/traba_anim/eleh-run1', 'atlas://img/traba_anim/eleh-run2',
-                              'atlas://img/traba_anim/eleh-run3', 'atlas://img/traba_anim/eleh-run4']
+                              'atlas://img/traba_anim/eleh-run3', 'atlas://img/traba_anim/eleh-run4',
+                              'atlas://img/traba_anim/eleh-run5','atlas://img/traba_anim/eleh-run6'
+                              ,'atlas://img/traba_anim/eleh-run7','atlas://img/traba_anim/eleh-run8']
         # tutaj wpisujesz run_animation , death_animation albo tree_death cos takiego czyli animacje smierci
         # oraz ruchu
         #self.x = 399  # pozycja x treemana
@@ -102,8 +105,8 @@ class Elephant(Sprite):
         #self.y = 10  # nadaje losowa pozycje y treemana
         self.y_border_touched = False #bool obslugujacy dolna i gorna granice
         self.x_border_touched = False #bool obslugujacy prawa i lewa granice
-        self.elephant_hp = 100
-        self.elephant_sila = 10
+        self.elephant_hp = 20
+        self.elephant_sila = 1
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
     def update(self):  # apdejt klasy
@@ -137,8 +140,6 @@ class Elephant(Sprite):
             self.y += 1
         else:
             self.y += 0
-
-
 
 
 

@@ -52,7 +52,14 @@ dodac taki tekst output jak monesters killed i dodawac + jeden za kazdm razem ja
 obracac losowo tile , zeby w roznyvh katach siw pojawialy
 #####################################################################3
 TROUBLESHOOTING:
+
+poszukac kod odpowiadajacy za znikanie potwora, bo elephant nie znika
+
+
 z jakiegos powodu nie moge przeprowadzac animacji bohatera przy kolizji z asc tiles.
+z jakiegos powodu animacja ruchu potworow nie odpala sie
+
+
 
 
 granice potwora nie sa "silniejsze" od tili, czyli nie sa one w stanie zatrzymac tili
