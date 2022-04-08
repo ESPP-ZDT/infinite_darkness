@@ -1,0 +1,23 @@
+{
+  "elephant.png": {
+    "eleh-attack1": [1, 1, 64, 64],
+    "eleh-attack2": [128, 1, 64, 64],
+    "eleh-attack3": [186, 1, 64, 64],
+    "eleh-attack4": [256, 1, 64, 64],
+    "eleh-attack5": [320, 1, 64, 64],
+    "eleh-attack6":[384, 1, 64, 64],
+    "eleh-attack7":[384, 1, 64, 64],
+    "eleh-attack8":[449, 1, 64, 64],
+    "eleh-attack9":[513, 1, 64, 64],
+    "eleh-attack10":[577, 1, 64, 64],
+    "eleh-death1":[640, 1, 64, 64],
+    "eleh-death2":[704, 1, 64, 64],
+    "eleh-death3":[768, 1, 64, 64],
+    "eleh-death4":[832, 1, 64, 64],
+    "eleh-run1": [896, 1, 64, 64],
+    "eleh-run2": [960, 1, 64, 64],
+    "eleh-run3": [1004, 1, 64, 64],
+    "eleh-run4": [1068, 1, 64, 64]
+
+  }
+}

@@ -1,0 +1,45 @@
+przeczytac caly kod
+kolejnosc czytania kodu -
+
+sprite.py - zawiera klase wywodzaca sie z kivy image, sluzy do tego zeby odwolujac sie do niej tworzyc sprajty ktore beda mialy size, taki jaki maja.
+
+##############################################################################################################################################################################################
+
+background.py - zawiera klase wywadzaca sie z kivy widget, sluzy do zbierania obrazu tile, wyswietlania jego i jego duplikatu, oraz przesuwania ich w prawo w celu stworzenia efektu
+przesuwajacego sie tla.
+
+##############################################################################################################################################################################################
+
+tiles.py zawiera klasy tworzace tile czyli:
+Tile_1 - to ta gruba dluzsza tile
+
+Tile_2 - to ta cienka dluga tile
+
+Floor_tile - to podloga
+
+zawiera klasy tworzace asc tile, ktore sa bardziej skomplikowane:
+Asc_Tile
+Asc_Tiles
+
+a takze klasy tworzace potwory na granicy ekranu, ktore sa placeholderami do ciemnosci - ktora zaaplikuje w przyszlosci.
+Left_Darkness
+Right_Darkness
+
+##############################################################################################################################################################################################
+
+hero.py zawiera klase tworzaca bohatera czyli
+Hero -
+
+##############################################################################################################################################################################################
+
+monsters.py zawiera klase tworzaca potwory czyli
+
+Treeman -
+
+##############################################################################################################################################################################################
+
+
+
+
+game.py - zawiera klase game, game app
+

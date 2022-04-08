@@ -1,0 +1,41 @@
+
+DONE:
+01;53
+wystarczy dodac animacje do treemana, potweakowac przy implementacji animacji ruchu, potem zaimplementowac gdzies hp,
+no i moze powinienem rozbic kod na pliki juz,
+
+
+koniec gry przy lewej i prawej stronie - uzasadnienie konca gry przez kolizje z lefr oraz right
+dark jest problematyczne, gdyz kwadraty kolizyjne tych sprajtow sa wieksze od ich rysunkow, co powoduje
+ze gra konczy sie od razu
+oprawic granice tile 1 i 2 zeby nie znikaly na ekranie tylko poza ekranem - MATEUSZA COMMIT
+
+ULOZYC KOLIZJE ALBO POOPISYWAC ZEBY WIEDZIEC GDZIE CO JEST
+PODOKLADAC ANIMACJE PRZY  DRZEWIE- JAK NIC NIE ROBI TO RUN , JAK WALCZY TO WALCZY, JAK JEGO HP = GINIE
+
+exp bylby nabijany przez pokonanie potwora
+
+
+trzeba stworzyc invisible sprita, ktory bedzie odpowiadal za kolizje z prawa oraz lewa czescia ekranu.
+ZROBIC HP
+ZROBIC IFA W KTORYM BEDZIE DODAWANY EXP
+oczywiscie hp,
+
+ogolnie koncepcja polega na tilach ktore zmieniaja pozycje x bohatera, calkowicie rozwija to rozgryke
+trzeba sie zastanowic teraz w jaki sposo tile powinny sie pojawiac na ekranie? w ktora strone maja przesuwac
+bohatera? ktore tile beda takie, ze bohater nie bedzie na nich biegal, a jedynie stal w miejscu gry one beda
+sie przesuwaly?
+te pytania pozostaja bez odpowiedzi ale takze:
+
+jak polacza sie ze soba animacje ataku oraz biegania? czy problem z jedynie jednokrotnym wyswietleniem
+animacji zostanie w ogole rozwiazany?
+
+moimi pipesami beda potwory, ktore beda sie spawnowac na tilach, musze
+przerobic caly kod co on tam pisze, i wymyslic wlasne klasy zawierajace potwory lub taka
+
+pora przeniesc podstawowa funkcjonalnosc animacji
+tak wiec najpierw tworze listy ataku oraz ruchu po tilu.
+ZROBIONE
+
+takze wyblitowac pajaka juz zanimowanego na tilu przyedielic mu animacje
+zifowac je na kolizji z tilem oraz z bohaterem

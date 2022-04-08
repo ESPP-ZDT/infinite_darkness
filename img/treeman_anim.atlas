@@ -1,0 +1,23 @@
+{
+  "treeman.png": {
+    "tree-attack1": [1, 1, 64, 64],
+    "tree-attack2": [128, 1, 64, 64],
+    "tree-attack3": [186, 1, 64, 64],
+    "tree-attack4": [256, 1, 64, 64],
+    "tree-attack5": [320, 1, 64, 64],
+    "tree-attack6":[384, 1, 64, 64],
+    "tree-attack7":[384, 1, 64, 64],
+    "tree-attack8":[449, 1, 64, 64],
+    "tree-attack9":[513, 1, 64, 64],
+    "tree-attack10":[577, 1, 64, 64],
+    "tree-death1":[640, 1, 64, 64],
+    "tree-death2":[704, 1, 64, 64],
+    "tree-death3":[768, 1, 64, 64],
+    "tree-death4":[832, 1, 64, 64],
+    "tree-run1": [896, 1, 64, 64],
+    "tree-run2": [960, 1, 64, 64],
+    "tree-run3": [1004, 1, 64, 64],
+    "tree-run4": [1068, 1, 64, 64]
+
+  }
+}

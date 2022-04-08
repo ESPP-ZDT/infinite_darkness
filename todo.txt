@@ -1,0 +1,149 @@
+##############################
+rozkminki-
+dodalem self.game_event_counter = 0, dodaje do niego jeden, iterujac przez gre.
+
+
+
+co jakbby wprowadzic timer
+i rozn lementy dodawac w okreslonym czasie
+albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
+ albo raz na jakis czas jakas rzecz sie zdarza,
+albo raz na jaks czas rzecz me szanse sie wydarzyc.
+
+
+
+moze tworztc na hero pozycji +10 bron np moze ten topor
+i pojawialby sie i colidoq+wal tylko przez ta sekundke
+
+i dodac potworowi kolizje z ta bronia jakby zbierala w pipke
+
+
+
+#######################################POJEDYNCZE AKCJE DO ZROBIENIA###################################
+FAJNE POMYSLY!! WKURWIAJACE
+sprobowac uwarunkowac pojwianie sie potworow w roznyvh rytmach i kombinacjach prz kolizji z hudem just for laughhs
+
+OGOLNIKOWE
+kod odpowiadajacy za to ze jesli potwor
+jesli treeman_dead albo inny boolean np drop_weapons, drop_potions i w miejscu smierci danego potwora wylatywalyby przedmioty
+te przedmioty przy kolizji z bohaterem wchodzilyby do jego ekwipunku,
+jesli bylaby to bron,dawalaby mu ona pocisk, ktorym bohater ciagle by strzelal.
+te bronie moga miec rozny zasieg
+jakby to byl topor zasig bylby maly i dodawalby tylko damage troche a nie zasieg bohaterowi
+lasery za to mialaby  nniejszy damage, ale wiekszy zasieg
+obmyslic jak bedzie wygladac text output, hud gry.
+przejrzec wszystkie pliki i poprawic komenty
+opisac dzialanie poszczegolnych klas
+
+KONKRETY
+ustawic soundtrack jako psychochrist - ostatnie swieta lacia
+wojownik powinien miec dzwiek otrzymania obrazen, lvl upa(?)  ataku, smierci od left darka, smierci
+treeman powinien miec dzwiek otrzymania obrazen, ataku, smierci
+dodac taki tekst output jak monesters killed i dodawac + jeden za kazdm razem jak potwor zostanie zabity, czyli jesli jego hp spadnie ponizej zera czy tam jeden
+
+
+
+
+
+obracac losowo tile , zeby w roznyvh katach siw pojawialy
+#####################################################################3
+TROUBLESHOOTING:
+z jakiegos powodu nie moge przeprowadzac animacji bohatera przy kolizji z asc tiles.
+
+
+granice potwora nie sa "silniejsze" od tili, czyli nie sa one w stanie zatrzymac tili
+od wrzucenia potwora poza ekran- mozna zmienic to w feature, spawnujac potwora w czasie-
+to spowoduje ze bedzie on poprostu pojawiajacym sie potworem, ktory moze Ci uciec.
+
+DODAWANIE POTWOROW ZA POMOCA LISTY
+https://stackoverflow.com/questions/61499500/creating-multiple-enemies-in-kivy-game
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RESEARCH
+https://www.youtube.com/watch?v=-NvpKDReKyg&list=PLdNh1e1kmiPP4YApJm8ENK2yMlwF1_edq&index=3 ++++++++ TEXT INPUT DO STWORZENIA HIGHSCORE?
+https://github.com/j4chaves/2D-Games-Project-3
+https://kivy.org/doc/stable/tutorials/pong.html
+https://iqcode.com/code/other/how-to-make-a-game-with-kivy
+https://kivy.org/doc/stable/examples/index.html
+XXXXXXXXXXXXXXXXXXXXXX
+
+
+#######################################
+aniol leci, oswietlajac ciemnosc
+podazasz za nim, w poszukiwaniu pucharu
+#########################################
+
+natrafilem na przytrzymanie obiektu przy dotyku, co oznacza ze moglbym zrobic przesuwane przez palec/myszke obiekty
+https://www.youtube.com/watch?v=nok_r0NR3vU
+
+DALEKO IDACE POMYSLY
+
+CO JAKBY CALE THERMY TRWAJACE OKRESLONY CZAS NP MINUTE SPAWNOWWLYBY SIE WLOSOWEJ KOLEJNOSCI
+musalbym zrobic np osobny plik z themem, tilami, obrazkiem niby w tle ale dalej obrazkiem
+
+co jakby gra btlA zzaplanowana na 10 min, a zyrandole mowilyby w ktprym monecie jestes?
+ze 2,45 minuty plus
+najpierw srebrmy,  potem krystaliczny  potem krwawy, potem smierci
+infusion of weapon level based on used experience
+na on motion event potwory "spadaja" na ekran
+
+zrobic handlarza np w prawym dolnym rogu albo na osobnym tilu w prawym lub lewym gornym, ktory by sie nie ruszal, i przy kolizji z nim pojawialo by sie menu
+
+od smierci od danego potwora moglyby sie zmieniac tile
+klase podstawowa z ktorej pomoca potem zrobic liste z ktorej losowo wyciagaloby sie potwory
+
+dropy to pozniejsza koncepcja
+
+
+Aniol i ciemnosc
+na krawedziach ekranu bedzie ciemnosc, w jakims miejscu ekranu bedzie aniol i on wspolzajemnie z ciemnoscia bedzie ja
+przesuwal. bo aniol swieci.
+
+JESLI BOHATER DOSTAJE KRYTA, POJAWIA SIE JUMPSCARE Z DANEGO PRZECIWNIKA
+
+KONCEPCJA LECZACYCH RZECZY I PUNKTOW LECZACYCH - PRZECIEZ MAM STUDNIE JUZ
+###############################################
+POMYSLY WSTEPNIE ODRZUCONE
+potwor mogkby na tym wyzszym tilu jak bohater wejdzie przesuwac sie w jego strone czyli w lewo,
+no i napierniczac go, a on sie z nim, i dodac im hp, i je wyswietlac, i zabawa polega
+na doskoczeniu do tila, dosuniecie sie odpowiednie, najebanie go lub uciekniecie
+
+potwor moglby pojawiac sie na 1/4 z prawej strony tego tila, miec hp, jakas sile czy cos
+i rzucalo by kostka za sile twoja i jego i no wytrzymalosc
+i by walczyli i no
+
+##################################################3
+POMYSLY PROSTE
+
+
+UNDONE
+bohater moglby sie obracac przy naparzaniu z prawej strony, tak samo potwor moglby zwracac sie w strone bohatera
+
+text outputy, menu i takie tam
+
+ERASER - CZYLi lewa strona moglby przy kolizji z bohaterem obracac sie o 90 stopni w sensie tak spasc w prawo jak posag miazdzac bohatera
+
+przy kolizji z tilesami enemy moga odpalac animacje ruchu, przesuwac sie w lewo i wjakims momencie tile
+ZATRZYMYWAC SIE, odpalac idle
+##########################################################
+WIZJE
+potwory moglyby miec phasey hp w ktoreych ich animacja bylaby inna
+
+nowe tile oraz potwory moga pojawiac sie wraz z lepszym levelem
+
+jak bedzie nabijany score? moze liczenie czasu?
+
+niektore potwory moga miec animacje ataku i boola on ground
+
+#####################################TODOOO#######################################################
+oprocz tego menusy i hp i game loop i potem to juz dokladanie wiecej ale bedzie podstawowy game loop
+mam juz podstawowe mechaniki ktore daja w miare satysfakcjonujace doswiadczenie wiec wystarczy rozkmniac to dalej i bedzie ok
+##################################################
+lore
+bravanagh to istota stworzona przez ludzka wiare w bohaterstwo, zradzajaca sie w ciemnosci
+
+eraser to istota niszczaca, jednak niewiadomo co dokladnie
+
+z prawej strony jest lord, jak narazie moze byc placeholderem
