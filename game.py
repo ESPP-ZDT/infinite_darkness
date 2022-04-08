@@ -59,7 +59,7 @@ class Game(Widget):
         self.add_widget(self.floor)  # i wyswietla
         self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(0, 0)))
         self.add_widget(self.treeman)
-
+        self.elephant = Elephant(pos=(rnd.randint(-100, 0), rnd.randint(0, 0)))
         #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
 
         self.game_over = False
@@ -81,9 +81,10 @@ class Game(Widget):
             self.treeman.update()
 
 
+
         self.hero_hplabel.text =  'hp'+str(self.hero.hero_hp)
         self.hero_explabel.text='exp'+str(self.hero.experience)
-
+        self.elephant.update()
 
         self.background.update()#updateuje background- kaze mu wykonywac poruszanie
         self.hero.update() # updateuje bohaterac
@@ -114,16 +115,28 @@ class Game(Widget):
             else:
                 self.hero.running = False#
 
-
+        #MONSTER COLLISIONS WITH OBJECTS
             if self.asc_tile.collide_widget(self.treeman):#przesuwa treemana przy kolizji z asctilem
                 self.treeman.x += 5
                 self.treeman.treeman_floorcoll = True
             else:
                 self.treeman.treeman_floorcoll = False
+            if self.tile_1.collide_widget(self.treeman):  # jesli treeman dotyka tila 1 czyli tego na dole
+                self.treeman.x += 5  # przesuwa w prawo
+            if self.tile_2.collide_widget(self.treeman):  # jesli treeman dotyka tila 2 czyli tego nagorze
+                self.treeman.x += -5  # przesuwa w lewo
+            if self.asc_tile.collide_widget(self.elephant):#przesuwa treemana przy kolizji z asctilem
+                self.elephant.x += 5
+                self.elephant.elephant_floorcoll = True
+            else:
+                self.elephant.elephant_floorcoll = False
+            if self.tile_1.collide_widget(self.elephant):  # jesli treeman dotyka tila 1 czyli tego na dole
+                self.elephant.x += 5  # przesuwa w prawo
+            if self.tile_2.collide_widget(self.elephant):  # jesli treeman dotyka tila 2 czyli tego nagorze
+                self.elephant.x += -5  # przesuwa w lewo
 
 
-
-
+        #HERO COLLISIONS WITH OBJECTS
 
         if self.hero.collide_widget(self.tile_2):#kolizja bohatera z tile 2 czyli tagorna
             self.hero.running = True# aktywuje animacje biegu
@@ -142,12 +155,9 @@ class Game(Widget):
         else:#
             self.hero.running = False#wylacza animacje ruchu
 
-        if self.tile_1.collide_widget(self.treeman):#jesli treeman dotyka tila 1 czyli tego na dole
-            self.treeman.x += 5#przesuwa w prawo
-        if self.tile_2.collide_widget(self.treeman):#jesli treeman dotyka tila 2 czyli tego nagorze
-            self.treeman.x += -5#przesuwa w lewo
 
 
+        #HERO COLLISIONS WITH MONSTERS
         if self.hero.collide_widget(self.treeman):#jesli bohater ma kolizje z treemanem
             self.hero.monster_touched = True#aktywuje animacje ataku
             self.treeman.x += 0.2#podbija treemana delikatnie w bok
@@ -156,6 +166,15 @@ class Game(Widget):
         else:
             self.hero.monster_touched = False#wylacza animacje ataku
 
+        if self.hero.collide_widget(self.elephant):#jesli bohater ma kolizje z treemanem
+            self.hero.monster_touched = True#aktywuje animacje ataku
+            self.elephant.x += 0.2#podbija treemana delikatnie w bok
+            self.elephant.y += 3#podbija treemana troszke do gory
+            self.elephant.elephant_hp += -8
+            print('dostajeszw pipke')
+        else:
+            self.hero.monster_touched = False#wylacza animacje ataku
+        #MONSTER COLLISION WITH HERO
 
         if self.treeman.collide_widget(self.hero) and self.treeman.treeman_dead == False:#jesli treeman dotknie hero
             self.treeman.treeman_collision = True#odpala animacje ataku treemana
@@ -163,9 +182,20 @@ class Game(Widget):
         else:self.treeman.treeman_collision = False#wylacza animacje ataku i treemana
         #if self.treeman.treeman_dead == False:
 
+        if self.elephant.collide_widget(self.hero) and self.elephant.elephant_dead == False:#jesli treeman dotknie hero
+            self.elephant.elephant_collision = True#odpala animacje ataku treemana
+            self.hero.hero_hp -= self.elephant.elephant_sila# #odcina hp u hero
+        else:self.elephant.elephant_collision = False#wylacza animacje ataku i treemana
+        #if self.treeman.treeman_dead == False:
+
+        #MONSTER DEATH(MOZE TUTAJ DROP?)
         if self.treeman.tree_exp == True:
             self.hero.experience += 100
             self.treeman.tree_exp = False
+
+        if self.elephant.elephant_exp == True:
+            self.hero.experience += 100
+            self.elephant.elephant_exp = False
 
         #kolizje warunkujace koniec gry przy dotknieciu prawej oraz lewej czesci ekranu
         if self.hero.collide_widget(self.left_death):

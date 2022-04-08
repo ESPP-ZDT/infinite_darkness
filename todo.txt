@@ -11,6 +11,10 @@ albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
 albo raz na jaks czas rzecz me szanse sie wydarzyc.
 
 
+walka polegala by na
+ROZKMIN WALKE NA PODSTAWIE STATYSTYK
+obecnie damage jest sila
+jest zycie
 
 moze tworztc na hero pozycji +10 bron np moze ten topor
 i pojawialby sie i colidoq+wal tylko przez ta sekundke
