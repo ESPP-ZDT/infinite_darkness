@@ -2,7 +2,9 @@
 rozkminki-
 dodalem self.game_event_counter = 0, dodaje do niego jeden, iterujac przez gre.
 
-
+WYCZYSCIC KOD
+JUTRO ODPOWIEDZI ZOSTANA NAM ODDANE
+POMYSLEC O ZMIENNYCH WPLYWAJACYCH NA WALKE, ZEBY TO NIE BYLO TAKIE NUDNE
 
 co jakbby wprowadzic timer
 i rozn lementy dodawac w okreslonym czasie
@@ -27,6 +29,12 @@ i dodac potworowi kolizje z ta bronia jakby zbierala w pipke
 FAJNE POMYSLY!! WKURWIAJACE
 sprobowac uwarunkowac pojwianie sie potworow w roznyvh rytmach i kombinacjach prz kolizji z hudem just for laughhs
 
+TOTALNIE WKURWIAJACY POMYSL - ROZPOZNAC CO POWODUJE ZE POTWOR NIE ZNIKA, I STWORZYC OKROPNEGO POTWORA KTORY NIE BEDZIE UMIERAL, I BEDZIE TYLKO WKURWIAL, BEDZIE GO MOZNA TYLKO WYRZUCIC W GORE
+
+sources of light  - co jakby byly przedmiotami, i np aniol jak go uwolnisz i dotkniesz, on zaczyna latac wokol Ciebie rozswietlajac ciemnosc i odpyhajac ja na jakas odleglosc
+moze byc tez tak ze jakies takie malutkie zrodla swiatla moglyby latac blisko bohatera, dawac mu male bonusy nawet, efekty swietlne,
+one moglyby miec timer, tak jak angel zycie, a takze takie permamentne, ktore ulepszalyby bohatera w dalszej czesci- tutaj by juz wchodzilo w gre zapisywanie gry
+
 OGOLNIKOWE
 kod odpowiadajacy za to ze jesli potwor
 jesli treeman_dead albo inny boolean np drop_weapons, drop_potions i w miejscu smierci danego potwora wylatywalyby przedmioty
@@ -38,6 +46,8 @@ lasery za to mialaby  nniejszy damage, ale wiekszy zasieg
 obmyslic jak bedzie wygladac text output, hud gry.
 przejrzec wszystkie pliki i poprawic komenty
 opisac dzialanie poszczegolnych klas
+
+
 
 KONKRETY
 ustawic soundtrack jako psychochrist - ostatnie swieta lacia
