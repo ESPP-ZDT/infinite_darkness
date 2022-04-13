@@ -105,7 +105,7 @@ class Elephant(Sprite):
         #self.y = 10  # nadaje losowa pozycje y treemana
         self.y_border_touched = False #bool obslugujacy dolna i gorna granice
         self.x_border_touched = False #bool obslugujacy prawa i lewa granice
-        self.hp = 20
+        self.hp = 100
         self.sila = 1
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
@@ -130,12 +130,13 @@ class Elephant(Sprite):
         if self.hp == 0:
             self.dead = True
             self.expdrop = True
+            self.opacity = 0
             #self.opacity = 0#sprawia ze znika
 
 
         if self.dead == True:
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
-            self.opacity = 0  # sprawia ze znika
+              # sprawia ze znika
 
         if self.y_border_touched == True:
             self.y -= 1
