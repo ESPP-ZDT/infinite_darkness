@@ -28,6 +28,7 @@ class Game(Widget):
     def __init__(self):#overriduje game
         super(Game ,self).__init__()#overriduje game
         self.enemies =[]
+        self.tiles = [] #lista zawierajaca tile
         self.game_event_counter = 0 #int liczacy czas w grze
 
         self.game_over = False
@@ -58,13 +59,12 @@ class Game(Widget):
         self.floor = Floor_Tile(source='img/tile.png')  # dodaje podloge
 
         self.add_widget(self.floor)  # i wyswietla
-        self.enemies.append(Treeman(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
+        self.enemies.append(Treeman(pos=(rnd.randint(500, 510), rnd.randint(660, 661)))) #to DODAJE TILE DO LISTY
         self.enemies.append(Elephant(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
 
         #self.enemies+=[Elephant(pos=(rnd.randint(200, 810), rnd.randint(660, 669))) for i in range(10)]
-        for w in self.enemies:
+        for w in self.enemies:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
             self.add_widget(w)
-
         #self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(660, 661)))
         #self.add_widget(self.treeman)
         #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
@@ -83,6 +83,8 @@ class Game(Widget):
         if self.game_over:
             self.game_event_counter = 0
             return
+        #tutaj dodam nowe tile
+
         self.game_event_counter += 1
         #coo 200 tickow dodaje treemana
         if (self.game_event_counter%200) == 0:

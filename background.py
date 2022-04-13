@@ -6,7 +6,7 @@ class Background(Widget):#tworzy widzet
         super(Background,self).__init__()#superuje ja zeby mozna bylo to uzyc w innych klasach
         self.image = Sprite(source = source)#tworzy zmienna obrazu ktory jest subklasa sprajta
         self.add_widget(self.image)#dodaje obraz jako widzet(?)
-        self.size = self.image.size#ustala rozmiar widzeta jako rozmiar obrazu
+        self.size = self.image.size#ustala rozmiar widzeta jako rozmiar obrazuCHYBA
         self.image_dupe = Sprite(source=source, x=self.width)#przywoluje drugi obrazek, z szerokoscia poprzedniego jako pozycja wyswietlajac go po nim
         self.add_widget(self.image_dupe)#wyswietla!! najwyrazniej widzet
     def update(self):

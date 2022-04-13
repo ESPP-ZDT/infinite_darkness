@@ -12,10 +12,10 @@ class Hero(Sprite):
                               'atlas://img/hero_anim/wing-run5']
         self.touch_duration = 0 #touch duration dlugosc przycisniecia
         self.attack_duration = 0
-        self.running = False  #bool aktywuujacy animacjie biegu
+        self.running = False  #bool aktywuujacy animacjie bieguPRZY KOLIZJI Z czyms- czyli z TILEM
         self.experience = 0
         self.experience_level = int(self.experience//100)
-        self.monster_touched = False #bool aktywujacy animacje ataku
+        self.monster_touched = False #bool aktywujacy animacje ataku przy kolizji z potworem POWINNA NAZYWAC SIE HERO TOUCHING MONSTER
         self.hero_hp = 130
 
     def update(self):
@@ -28,14 +28,14 @@ class Hero(Sprite):
         elif self.velocity_y < 0:
             self.source = 'atlas://img/hero_anim/wing-attack1'
 
-
-        if self.running: #and self.velocity_y < -5:
-            #self.touch_duration += 1# animacja
+        #NWM CZEMU TO JEST W UPDATE TAK NAPRAWDE
+        #INSTRUKCJA WARUNKOWA AKTYWUJACA ANIMACJE BIEGU, ITERUJAC PRZEZ NIA.
+        if self.running:
             self.touch_duration += 1
             self.source = self.run_animation[min(len(self.run_animation) - 1, self.touch_duration // 30)]
         else:
             self.touch_duration = 0
-
+        # INSTRUKCJA WARUNKOWA AKTYWUJACA ANIMACJE ATAKU, ITERUJAC PRZEZ NIA.
         if self.monster_touched:
             self.attack_duration += 1
             self.source = self.attack_animation[min(len(self.attack_animation) - 1, self.attack_duration // 30)]
