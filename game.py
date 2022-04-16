@@ -1,4 +1,5 @@
 from kivy.app import App
+from kivy.core.audio import SoundLoader
 from kivy.uix.widget import Widget
 from kivy.uix.image import Image
 from kivy.core.window import Window
@@ -13,6 +14,7 @@ from hero import *
 from potions import *
 from kivy.properties import ObjectProperty, NumericProperty, ListProperty
 
+sfx_hit = SoundLoader.load('img/id laugh 1.wav')
 class Menu(Widget):
     def __init__(self):
         super(Menu,self).__init__()
@@ -84,7 +86,7 @@ class Game(Widget):
         #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
         #self.add_widget(self.elephant)
         #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
-
+        self.sfx_hit = SoundLoader.load('img/random.wav')
         self.game_over = False
         self.hero_hplabel = Label(center_x=self.center_x, top=self.top - 200, text="0")
         self.add_widget(self.hero_hplabel)
@@ -93,6 +95,9 @@ class Game(Widget):
         self.endgame_label = Label(center=self.center,opacity=0,
                                    text='gameover'+ 'exp'+str(self.hero.experience))
         Clock.schedule_interval(self.update, 1.0 / 60.0)  # ustawia 60 tickow, tempo gry
+
+
+
     def update(self, dt):
         if self.game_over:
             self.game_event_counter = 0
@@ -212,6 +217,7 @@ class Game(Widget):
                 enemy.x += 0.2  # podbija treemana delikatnie w bok
                 enemy.y += 2  # podbija treemana troszke do gory
                 enemy.hp += -self.hero.sila * self.hero.charge_power
+                self.sfx_hit.play()
             else:
                 self.hero.monster_touched = False  # wylacza animacje ataku
 
@@ -219,7 +225,8 @@ class Game(Widget):
 
             if enemy.collide_widget(self.hero) and enemy.dead == False:  # jesli treeman dotknie hero
                 enemy.collision = True  # odpala animacje ataku treemana
-                self.hero.hero_hp -= (enemy.sila + self.hero.charge_power)  # #odcina hp u hero
+                self.hero.hero_hp -= (enemy.sila + self.hero.charge_power)
+                # #odcina hp u hero
             else:
                 enemy.collision = False  # wylacza animacje ataku i treemana
             # if enemy.treeman_dead == False:
