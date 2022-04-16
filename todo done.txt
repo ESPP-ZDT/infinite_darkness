@@ -39,3 +39,5 @@ ZROBIONE
 
 takze wyblitowac pajaka juz zanimowanego na tilu przyedielic mu animacje
 zifowac je na kolizji z tilem oraz z bohaterem
+
+obrazenia na potworze moglyby sie mnozyc z predkoscia przesuwania bohatera do przodu

@@ -4,6 +4,7 @@ from kivy.clock import Clock
 class Treeman(Sprite):
     def __init__(self, pos):  # przywoluje w konstruktorze pozycje
         super(Treeman, self).__init__(source='atlas://img/treeman_anim/tree-attack2', pos=pos)
+        #ANIMACJE - LISTY JSONOWE ANIMACJE
         self.attack_animation = ['atlas://img/treeman_anim/tree-attack1', 'atlas://img/treeman_anim/tree-attack2',
                                  'atlas://img/treeman_anim/tree-attack3', 'atlas://img/treeman_anim/tree-attack4',
                                  'atlas://img/treeman_anim/tree-attack5', 'atlas://img/treeman_anim/tree-attack6',
@@ -13,9 +14,6 @@ class Treeman(Sprite):
                                 'atlas://img/treeman_anim/tree-death3', 'atlas://img/treeman_anim/tree-death4']
         self.run_animation = ['atlas://img/treeman_anim/tree-run1', 'atlas://img/treeman_anim/tree-run2',
                               'atlas://img/treeman_anim/tree-run3', 'atlas://img/treeman_anim/tree-run4']
-        # tutaj wpisujesz run_animation , death_animation albo tree_death cos takiego czyli animacje smierci
-        # oraz ruchu
-        #self.x = 399  # pozycja x treemana
         self.collision = False  # bool odpowiadajacy za odpalenie animacji ataku przy kolizji z bohaterem
         self.floorcoll = False  # bool odpowiadajacy z a odpolenie animacji ruchu przy kolizji z podloga
         self.dead = False  # bool odpowiadajacy za odpalenie animacji smierci po smierci treemana

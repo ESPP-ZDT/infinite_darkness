@@ -12,13 +12,8 @@ class Tile_1(Sprite): #fat small tile
             self.x = rnd.randint(1000, 1950)#jak sie przesuwa pojawia sie z drugiej strony w innym y
 
 
-class New_Tile_1(Sprite): #fat small tile
-    def update(self): #updateuje klase
-        self.x -= 2 #porusza podloga
-        if self.x < -300: #przeniescu tutaj podobne liczny do przesuwania podlogi
-            self.x = 1000#scrollujego
-            self.y = rnd.randint(120, 200)
-            self.x = rnd.randint(1000, 1950)#jak sie przesuwa pojawia sie z drugiej strony w innym y
+
+
 
 
 class Tile_2(Sprite): #fat small tile

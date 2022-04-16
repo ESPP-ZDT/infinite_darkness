@@ -16,3 +16,4 @@ class Background(Widget):#tworzy widzet
         if self.image.right <= 0: #jesli prawa strona obrazka jest wieksza lub rowna zero(?)
             self.image.x = 0 #ustawia pierwszy obrazek w pierwotnej pozycji
             self.image_dupe.x = self.width #ustawia drugi obrazek w tamtym miejscu gdzie byl
+

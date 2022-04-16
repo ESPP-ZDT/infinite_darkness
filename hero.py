@@ -17,6 +17,8 @@ class Hero(Sprite):
         self.experience_level = int(self.experience//100)
         self.monster_touched = False #bool aktywujacy animacje ataku przy kolizji z potworem POWINNA NAZYWAC SIE HERO TOUCHING MONSTER
         self.hero_hp = 130
+        self.sila = 10
+        self.charge_power = 1
 
     def update(self):
 
@@ -44,5 +46,5 @@ class Hero(Sprite):
 
     def on_touch_down(self, *ignore):#tu jest metoda ktora sprawia ze gdy dotkniemy ekranu
         self.velocity_y = 5.5#to velocity_y sie zwieksza i skaczemy
-        self.x += 3
+        self.x += self.charge_power
         self.source =  'atlas://img/hero_anim/wing-attack4'#tu tez jest warunkowana pojdydncza animacja

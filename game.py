@@ -10,6 +10,7 @@ from sprite import *
 from background import *
 from monsters import *
 from hero import *
+from potions import *
 from kivy.properties import ObjectProperty, NumericProperty, ListProperty
 
 class Menu(Widget):
@@ -29,15 +30,18 @@ class Game(Widget):
         super(Game ,self).__init__()#overriduje game
         self.enemies =[]
         self.tiles = [] #lista zawierajaca tile
+        self.hearts = []
+        self.charge_boosts = []
         self.game_event_counter = 0 #int liczacy czas w grze
 
         self.game_over = False
         self.background = Background(source='img/tile 3.png')# przywoluje background, przypisuje do zmiennej
         self.size = self.background.size #ustala size gry na size tilea
-        #potem mozna zrobic tile wielkosci ekranu na telefonie
         self.add_widget(self.background)#wyswietla- jak tutaj na dole z tamtymi
+
         self.hero = Hero(pos= (100, self.height/2))#przywoluje i pozycjonuje bohatera na srodku
         self.add_widget(self.hero)#wyswietla sprite bohatera.
+
 
 
 
@@ -45,6 +49,7 @@ class Game(Widget):
         self.add_widget(self.asc_tiles)#blituje te poruszajace sie do gory tilesy
         self.tile_1 = Tile_1(source='img/i d tile 1.png')#dodaje fat tile,
         self.add_widget(self.tile_1)#i wyswietla
+
 
         self.tile_2 = Tile_2(source='img/id tile 4.png')  # dodaje skinny tile,
         self.add_widget(self.tile_2)  # i wyswietla
@@ -61,10 +66,19 @@ class Game(Widget):
         self.add_widget(self.floor)  # i wyswietla
         self.enemies.append(Treeman(pos=(rnd.randint(500, 510), rnd.randint(660, 661)))) #to DODAJE TILE DO LISTY
         self.enemies.append(Elephant(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
+        self.hearts.append(Healing_Heart(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
+
+
 
         #self.enemies+=[Elephant(pos=(rnd.randint(200, 810), rnd.randint(660, 669))) for i in range(10)]
         for w in self.enemies:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
             self.add_widget(w)
+
+        for h in self.hearts:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
+            self.add_widget(h)
+
+        for b in self.charge_boosts:
+            self.add_widget(b)
         #self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(660, 661)))
         #self.add_widget(self.treeman)
         #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
@@ -87,15 +101,7 @@ class Game(Widget):
 
         self.game_event_counter += 1
         #coo 200 tickow dodaje treemana
-        if (self.game_event_counter%200) == 0:
-            nazwa = Treeman(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
-            self.enemies.append(nazwa)
-            self.add_widget(nazwa)
 
-        if (self.game_event_counter%300) == 0:
-            nazwa = Elephant(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
-            self.enemies.append(nazwa)
-            self.add_widget(nazwa)
 
 
         #iterujesz zegar na rozne obiekty osobno kurwo
@@ -110,6 +116,7 @@ class Game(Widget):
         self.tile_2.update()  # updateuje gruba tile
         self.floor.update()  # updateuje podloge
         self.tile_1.update()  # updateuje gruba tile
+
         self.left_death.update()  # updateuje smierc z lewej strony
         self.left_dark.update()  # updateuje erasera
 
@@ -120,6 +127,34 @@ class Game(Widget):
             elif isinstance(enemy,Elephant):
                 if self.game_event_counter >= 100:
                     enemy.update()
+
+        for heart in self.hearts:
+            heart.update()
+
+        for boost in self.charge_boosts:
+            boost.update()
+
+
+        if (self.game_event_counter%200) == 0:
+            nazwa = Treeman(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
+            self.enemies.append(nazwa)
+            self.add_widget(nazwa)
+
+        if (self.game_event_counter % 1000) == 0:
+            nazwa = Healing_Heart(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
+            self.hearts.append(nazwa)
+            self.add_widget(nazwa)
+
+        if (self.game_event_counter % 600) == 0:
+            nazwa = Big_Right_Boost(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
+            self.charge_boosts.append(nazwa)
+            self.add_widget(nazwa)
+
+        if (self.game_event_counter%300) == 0:
+            nazwa = Elephant(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
+            self.enemies.append(nazwa)
+            self.add_widget(nazwa)
+
 
 
 
@@ -144,6 +179,23 @@ class Game(Widget):
 
         print(self.game_event_counter)
 
+        for heart in self.hearts:
+            if self.hero.collide_widget(heart):
+                self.hero.hero_hp += 100
+                heart.opacity =0
+                self.hearts.remove(heart)
+
+        for boost in self.charge_boosts:
+            if self.hero.collide_widget(boost):
+                self.hero.charge_power += 1
+                boost.opacity =0
+                self.charge_boosts.remove(boost)
+
+
+
+
+
+
         for enemy in self.enemies:
             if self.asc_tile.collide_widget(enemy):  # przesuwa treemana przy kolizji z asctilem
                 enemy.x += 5
@@ -159,7 +211,7 @@ class Game(Widget):
                 self.hero.monster_touched = True  # aktywuje animacje ataku
                 enemy.x += 0.2  # podbija treemana delikatnie w bok
                 enemy.y += 2  # podbija treemana troszke do gory
-                enemy.hp += -10
+                enemy.hp += -self.hero.sila * self.hero.charge_power
             else:
                 self.hero.monster_touched = False  # wylacza animacje ataku
 
@@ -167,7 +219,7 @@ class Game(Widget):
 
             if enemy.collide_widget(self.hero) and enemy.dead == False:  # jesli treeman dotknie hero
                 enemy.collision = True  # odpala animacje ataku treemana
-                self.hero.hero_hp -= enemy.sila  # #odcina hp u hero
+                self.hero.hero_hp -= (enemy.sila + self.hero.charge_power)  # #odcina hp u hero
             else:
                 enemy.collision = False  # wylacza animacje ataku i treemana
             # if enemy.treeman_dead == False:
@@ -176,8 +228,8 @@ class Game(Widget):
             # MONSTER DEATH(MOZE TUTAJ DROP?)
             if enemy.expdrop == True:
                 self.hero.experience += 100
+                self.enemies.remove(enemy)
                 enemy.expdrop = False
-
 
 
 

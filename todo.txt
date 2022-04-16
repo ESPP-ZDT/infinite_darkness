@@ -1,4 +1,37 @@
+WAZNE ENDGAMOWE RZECZY
+POZYCJONOWANE
+
+co jakby pomoca kivy lnaguage zorbic
+<Hero>
+    canvas:
+        Rectangle:(Picture?)
+
+    Bron:  ktora bylaby podklasa  Sprajta
+    source:'costam"
+    pos: root.x +50, root.y.5
+
+
+zrobic takie strzalki ze jak je dotkniesz to Cie albo bardziej do przodu albo bardziej do tylu przesuwa-
+to zrobie podstawiajac zmienna pod ten uklad ktory poqoduje ze bohater przesuwa sie do przodu. tak samo wysokosc skoku.
+
+
+co jakby przerobic wszystkie akcje na boole i przeporwadzac je we wlasnych klasach
+ze zamiast if costam collidewidget costam tylko
+ze ten colide jest boolem
+
+
+jesli chce obslugiwac tile lsitmi musze je usuwac przy przejsciu pewnego poziomu, bo tak by sie dodawaly w nieskonczonosc i meczyly bule prockowi - cos do posiadania na wzgledzie przy kolejej
+probie wdrozeniowej
+
+
+mozesz warunkowac pojawianie sie koljenych tili od poziomu doswiadczenia bohatera lub czasu
+
+
+
 ##############################
+
+
+
 GLOWNE RZECZY
 PRZECZYTAC KOD MONSTEROW JESZCZE RAZ I JAK SIE TO APLIKUJE
 
