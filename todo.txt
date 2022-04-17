@@ -1,5 +1,37 @@
+
+
+
+
+STWORZYC OBIEKT KTORY PRZY KOLIZJI Z BOHATEREM BEDZIE DODAWAC MU HP I #####################NAJLEPIEJ ZEBY SIE SPAWNOWAL JAK PRZECIWNIK UMRZE##########
+
+
+
+DODAC SWIATYNIE LECZENIA
+
+MUSZE PAMIETAC ZE NA TILU TYPE WIDGET ANIMACJA NIE DZIALA
+
+WYSOKOSC SKOKU jako ZMIENNA
+
+co jakby ELITARNE potwory spawnowaly by sie w grupach,
+ od dwoch do kilku,
+ raz na jakis czasRZADKO,
+  z jednej z czterech czesci na ekranie,
+  zeby wleciec na ekran.
+
+
+
+ZNALEZC PRZYROWNANIA DO SYTUACJI Z TEGO TEKSTU I ZREALIZOWAC NIEZREALIZOWAANE
+
+co jakbby wprowadzic timer
+i rozn lementy dodawac w okreslonym czasie
+albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
+ albo raz na jakis czas jakas rzecz sie zdarza,
+albo raz na jaks czas rzecz me szanse sie wydarzyc.
+
+
 WAZNE ENDGAMOWE RZECZY
 POZYCJONOWANE
+
 
 co jakby pomoca kivy lnaguage zorbic
 <Hero>
@@ -14,17 +46,17 @@ co jakby pomoca kivy lnaguage zorbic
 zrobic takie strzalki ze jak je dotkniesz to Cie albo bardziej do przodu albo bardziej do tylu przesuwa-
 to zrobie podstawiajac zmienna pod ten uklad ktory poqoduje ze bohater przesuwa sie do przodu. tak samo wysokosc skoku.
 
-
+#############################################
 co jakby przerobic wszystkie akcje na boole i przeporwadzac je we wlasnych klasach
 ze zamiast if costam collidewidget costam tylko
 ze ten colide jest boolem
-
+#####################################################################
 
 jesli chce obslugiwac tile lsitmi musze je usuwac przy przejsciu pewnego poziomu, bo tak by sie dodawaly w nieskonczonosc i meczyly bule prockowi - cos do posiadania na wzgledzie przy kolejej
 probie wdrozeniowej
+################################################
 
 
-mozesz warunkowac pojawianie sie koljenych tili od poziomu doswiadczenia bohatera lub czasu
 
 
 
@@ -40,12 +72,10 @@ PRZEREFACTOROWAC KOD TILI NA TAKI KTORY SIE POWIELA Z POTWORAMI, ZE DODANY DO LI
 DODAC JESZCZE JEDNEGO SKURWYSYNA, PRZEKOPIOWUJAC KOD TREEMANA, A POTEM IKOD ELEPHANTA
 
 
-STWORZYC OBIEKT KTORY PRZY KOLIZJI Z BOHATEREM BEDZIE DODAWAC MU HP I NAJLEPIEJ ZEBY SIE SPAWNOWAL JAK PRZECIWNIK UMRZE
 
 
-DODAC SWIATYNIE LECZENIA
 
-MUSZE PAMIETAC ZE NA TILU TYPE WIDGET ANIMACJA NIE DZIALA
+
 
 
 
@@ -55,7 +85,7 @@ dodalem self.game_event_counter = 0, dodaje do niego jeden, iterujac przez gre.
 PIOTRA ROZKMINY:::::::::::::::::::::::::::
 PRZY OSIAGNIECIU DANEGO POZIOMU EKXPA POWIEDZMY 1000
 ZEBY WYPIERDALALO SUBMENU WYBORU DODATKOWYCH STATYSTYK OLBO COS
-WYSOKOSC SKOKU
+WYSOKOSC SKOKU jako ZMIENNA
 PRZESUNIECIE W PRAWO ALBO PRZESUNIECIE W LEWO
 REGENERACJA ZDROWIA LUB ZWIEKSOZNE ZDROWIE
 
@@ -67,14 +97,9 @@ co jakby potwory spawnowaly by sie w grupach,
 
 
 
-WYCZYSCIC KOD
-POMYSLEC O ZMIENNYCH WPLYWAJACYCH NA WALKE, ZEBY TO NIE BYLO TAKIE NUDNE
+WY
 ULTIMATE TIME FORMULA -WPROWADZIC PRZYKALDY DO FORMULY
-co jakbby wprowadzic timer
-i rozn lementy dodawac w okreslonym czasie
-albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
- albo raz na jakis czas jakas rzecz sie zdarza,
-albo raz na jaks czas rzecz me szanse sie wydarzyc.
+
 
 
 walka polegala by na
@@ -127,7 +152,7 @@ obracac losowo tile , zeby w roznyvh katach siw pojawialy
 #####################################################################3
 TROUBLESHOOTING:
 
-poszukac kod odpowiadajacy za znikanie potwora, bo elephant nie znika
+
 
 
 z jakiegos powodu nie moge przeprowadzac animacji bohatera przy kolizji z asc tiles.

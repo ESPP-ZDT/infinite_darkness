@@ -1,4 +1,5 @@
 from kivy.app import App
+from level_tiles import *
 from kivy.core.audio import SoundLoader
 from kivy.uix.widget import Widget
 from kivy.uix.image import Image
@@ -34,6 +35,7 @@ class Game(Widget):
         self.tiles = [] #lista zawierajaca tile
         self.hearts = []
         self.charge_boosts = []
+        self.l2tiles =[]
         self.game_event_counter = 0 #int liczacy czas w grze
 
         self.game_over = False
@@ -81,6 +83,9 @@ class Game(Widget):
 
         for b in self.charge_boosts:
             self.add_widget(b)
+
+        for t in self.l2tiles:
+            self.add_widget(t)
         #self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(660, 661)))
         #self.add_widget(self.treeman)
         #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
@@ -139,6 +144,9 @@ class Game(Widget):
         for boost in self.charge_boosts:
             boost.update()
 
+        for tile in self.l2tiles:
+            tile.update()
+
 
         if (self.game_event_counter%200) == 0:
             nazwa = Treeman(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
@@ -158,6 +166,11 @@ class Game(Widget):
         if (self.game_event_counter%300) == 0:
             nazwa = Elephant(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
             self.enemies.append(nazwa)
+            self.add_widget(nazwa)
+
+        if (self.game_event_counter%300) == 0 and self.hero.experience >= 200:
+            nazwa = L2Tile(pos=(rnd.randint(0,30),rnd.randint(0, 1000)))
+            self.l2tiles.append(nazwa)
             self.add_widget(nazwa)
 
 
@@ -196,6 +209,17 @@ class Game(Widget):
                 boost.opacity =0
                 self.charge_boosts.remove(boost)
 
+        for tile in self.l2tiles:
+            if self.hero.collide_widget(tile):
+                self.hero.x += 8
+                self.hero.running = True  # aktywuje animacje
+                self.hero.y = tile.top  # uklada bohatera na gorze tila
+                 # przesuwa bohatera
+
+
+
+
+               # self.l2tiles.remove(tile) to wastawiasz do instrulkcj warunkowej usuwajacej tile jak przejda za ekran jeski bedzie potrzebne to
 
 
 

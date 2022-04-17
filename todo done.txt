@@ -41,3 +41,10 @@ takze wyblitowac pajaka juz zanimowanego na tilu przyedielic mu animacje
 zifowac je na kolizji z tilem oraz z bohaterem
 
 obrazenia na potworze moglyby sie mnozyc z predkoscia przesuwania bohatera do przodu
+
+mozesz warunkowac pojawianie sie koljenych tili od poziomu doswiadczenia bohatera lub czasu
+
+CZYSCIC KOD
+POMYSLEC O ZMIENNYCH WPLYWAJACYCH NA WALKE, ZEBY TO NIE BYLO TAKIE NUDNE
+
+poszukac kod odpowiadajacy za znikanie potwora, bo elephant nie znika
