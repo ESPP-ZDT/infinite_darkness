@@ -26,6 +26,15 @@ class Treeman(Sprite):
         self.sila = 2
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
+    def on_hit(self,hitter):
+        hitter.monster_touched = True  # aktywuje animacje ataku
+        self.x += 0.2  # podbija treemana delikatnie w bok
+        self.y += 2  # podbija treemana troszke do gory
+        self.hp += -hitter.sila * hitter.charge_power
+
+    def calc_dmg(self,victim):
+        return self.sila
+
     def update(self):  # apdejt klasy
 
         # tutaj wpisujesz ify lub elify do anumacji ruchu? ktora musialaby sie poprostu moze tutaj zmieniac?
@@ -43,7 +52,7 @@ class Treeman(Sprite):
         if self.hp <= 20:
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
 
-        if self.hp == 0:
+        if self.hp <= 0:
             self.dead = True
             self.expdrop = True
             self.opacity = 0
@@ -107,6 +116,15 @@ class Elephant(Sprite):
         self.sila = 1
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
+    def on_hit(self,hitter):
+        hitter.monster_touched = True  # aktywuje animacje ataku
+        self.x += 0.2  # podbija treemana delikatnie w bok
+        self.y += 2  # podbija treemana troszke do gory
+        self.hp += -hitter.sila * hitter.charge_power
+
+    def calc_dmg(self,victim):
+        return self.sila
+
     def update(self):  # apdejt klasy
 
         # tutaj wpisujesz ify lub elify do anumacji ruchu? ktora musialaby sie poprostu moze tutaj zmieniac?
@@ -125,7 +143,7 @@ class Elephant(Sprite):
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
 
 
-        if self.hp == 0:
+        if self.hp <= 0:
             self.dead = True
             self.expdrop = True
             self.opacity = 0

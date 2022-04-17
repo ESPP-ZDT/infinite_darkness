@@ -93,8 +93,8 @@ class Game(Widget):
         #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
         self.sfx_hit = SoundLoader.load('img/random.wav')
         self.game_over = False
-        self.hero_hplabel = Label(center_x=self.center_x, top=self.top - 200, text="0")
-        self.add_widget(self.hero_hplabel)
+        self.hplabel = Label(center_x=self.center_x, top=self.top - 200, text="0")
+        self.add_widget(self.hplabel)
         self.hero_explabel = Label(center_x=self.center_x + 200, top=self.top - 200, text="0")
         self.add_widget(self.hero_explabel)
         self.endgame_label = Label(center=self.center,opacity=0,
@@ -115,7 +115,7 @@ class Game(Widget):
 
 
         #iterujesz zegar na rozne obiekty osobno kurwo
-        self.hero_hplabel.text = 'hp' + str(self.hero.hero_hp)
+        self.hplabel.text = 'hp' + str(self.hero.hp)
         self.hero_explabel.text = 'exp' + str(self.hero.experience)
 
         self.background.update()  # updateuje background- kaze mu wykonywac poruszanie
@@ -176,12 +176,6 @@ class Game(Widget):
 
 
 
-
-
-
-
-
-
         self.asc_tiles.update(dt)#updateuje to ruszajace sie tilesy
         for self.asc_tile in self.asc_tiles.children:# iteruje przez liste
             if self.asc_tile.collide_widget(self.hero):#kolizja elementow listy tiki
@@ -199,13 +193,13 @@ class Game(Widget):
 
         for heart in self.hearts:
             if self.hero.collide_widget(heart):
-                self.hero.hero_hp += 100
+                self.hero.hp += 100#O TYM POMYSL
                 heart.opacity =0
                 self.hearts.remove(heart)
 
         for boost in self.charge_boosts:
             if self.hero.collide_widget(boost):
-                self.hero.charge_power += 1
+                self.hero.charge_power += boost.boost_amount
                 boost.opacity =0
                 self.charge_boosts.remove(boost)
 
@@ -221,10 +215,7 @@ class Game(Widget):
 
                # self.l2tiles.remove(tile) to wastawiasz do instrulkcj warunkowej usuwajacej tile jak przejda za ekran jeski bedzie potrzebne to
 
-
-
-
-
+        self.hero.monster_touched = False  # wylacza animacje ataku
         for enemy in self.enemies:
             if self.asc_tile.collide_widget(enemy):  # przesuwa treemana przy kolizji z asctilem
                 enemy.x += 5
@@ -237,22 +228,16 @@ class Game(Widget):
                 enemy.x += -5  # przesuwa w lewo
             #OOO ELEPHANT TO MA MIEC INNE OBRAZENIA I W OGOLE!
             if self.hero.collide_widget(enemy):  # jesli bohater ma kolizje z treemanem
-                self.hero.monster_touched = True  # aktywuje animacje ataku
-                enemy.x += 0.2  # podbija treemana delikatnie w bok
-                enemy.y += 2  # podbija treemana troszke do gory
-                enemy.hp += -self.hero.sila * self.hero.charge_power
-                self.sfx_hit.play()
-            else:
-                self.hero.monster_touched = False  # wylacza animacje ataku
+                enemy.on_hit(self.hero)#TUTAJ ZASZLY ZMIANY, ZOSTALO PRZENIESIONE DO POTWOROW
 
-
+            enemy.collision = False
 
             if enemy.collide_widget(self.hero) and enemy.dead == False:  # jesli treeman dotknie hero
                 enemy.collision = True  # odpala animacje ataku treemana
-                self.hero.hero_hp -= (enemy.sila + self.hero.charge_power)
+                self.hero.hp -= enemy.calc_dmg(self.hero)#TUTAJ ZOSTALY POCZYNIONE ZMIANY, ZOSTALO PRZENIESIONE DO POTWORA
                 # #odcina hp u hero
-            else:
-                enemy.collision = False  # wylacza animacje ataku i treemana
+
+                 # wylacza animacje ataku i treemana
             # if enemy.treeman_dead == False:
 
 
@@ -314,8 +299,8 @@ class Game(Widget):
             self.game_over = True
         #else
         #print(self.hero.experience)
-        #print(self.hero.hero_hp)
-        if self.hero.hero_hp <= 0:
+        #print(self.hero.hp)
+        if self.hero.hp <= 0:
             self.game_over = True
             print('game over')
         if self.game_over:

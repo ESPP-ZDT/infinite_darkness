@@ -16,7 +16,7 @@ class Hero(Sprite):
         self.experience = 0
         self.experience_level = int(self.experience//100)
         self.monster_touched = False #bool aktywujacy animacje ataku przy kolizji z potworem POWINNA NAZYWAC SIE HERO TOUCHING MONSTER
-        self.hero_hp = 130
+        self.hp = 130
         self.sila = 10
         self.charge_power = 1
 
