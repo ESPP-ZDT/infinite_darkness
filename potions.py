@@ -50,7 +50,8 @@ class Big_Right_Boost(Sprite):#strzalka ktora dodaje charge power herosowi
 
     def update(self):  # apdejt klasy
 
-        self.x += randrange(1,2)
+        self.x += randrange(1,5)
+        #self.y += randrange(1,10,2)
 
         if self.y_border_touched == True:
             self.y -= 1

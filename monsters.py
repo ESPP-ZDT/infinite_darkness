@@ -26,7 +26,7 @@ class Treeman(Sprite):
         self.sila = 2
         #Clock.schedule_interval(self.update, .0 / 60.0)
 
-    def on_hit(self,hitter):
+    def on_hit(self,hitter):#modul odpowiadajacy za aktywacje animacji, przesuniecie potwora oraz obliczanie obrazen, do zastosowania przy kolizji z bohaterem
         hitter.monster_touched = True  # aktywuje animacje ataku
         self.x += 0.2  # podbija treemana delikatnie w bok
         self.y += 2  # podbija treemana troszke do gory
@@ -34,6 +34,9 @@ class Treeman(Sprite):
 
     def calc_dmg(self,victim):
         return self.sila
+
+    def on_basic_tile_touch(self):
+        self.x += 5
 
     def update(self):  # apdejt klasy
 
@@ -49,7 +52,7 @@ class Treeman(Sprite):
         else:
             self.source = self.run_animation[min(len(self.run_animation) - 1, self.monster_touch // 10)]
             self.monster_touch = 0  # resetuje dotyk
-        if self.hp <= 20:
+        if self.hp <= 10:
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
 
         if self.hp <= 0:
@@ -125,6 +128,9 @@ class Elephant(Sprite):
     def calc_dmg(self,victim):
         return self.sila
 
+    def on_basic_tile_touch(self):
+        self.x += 5
+
     def update(self):  # apdejt klasy
 
         # tutaj wpisujesz ify lub elify do anumacji ruchu? ktora musialaby sie poprostu moze tutaj zmieniac?
@@ -139,6 +145,7 @@ class Elephant(Sprite):
         else:
             self.source = self.run_animation[min(len(self.run_animation) - 1, self.monster_touch // 10)]
             self.monster_touch = 0  # resetuje dotyk
+
         if self.hp <= 10:
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
 
@@ -163,10 +170,12 @@ class Elephant(Sprite):
 
 
 
-        if self.y == 930:
+        if self.y >= 930:
             self.y_border_touched = True
-        if self.y == -10:
+            self.x += 30
+        if self.y <= -10:
             self.y_border_touched = False
+            self.x += 20
 
         if self.x == 900:
             self.x += -1

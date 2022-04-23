@@ -13,9 +13,6 @@ class Tile_1(Sprite): #fat small tile
 
 
 
-
-
-
 class Tile_2(Sprite): #fat small tile
     def update(self): #updateuje klase
 
@@ -95,7 +92,7 @@ class Right_Death(Sprite): #floor til
 
     def update(self): #updateuje klase
         #if self.x < -10: #przeniescu tutaj podobne liczny do przesuwania podlogi
-        self.x = 1000#scrollujego
+        self.x = 990#scrollujego
             #self.y = random.randint(0, 200)
             #self.x = random.randint(600, 900)#jak sie przesuwa pojawia sie z drugiej strony w innym y
 

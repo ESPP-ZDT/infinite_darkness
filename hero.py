@@ -14,6 +14,8 @@ class Hero(Sprite):
         self.attack_duration = 0
         self.running = False  #bool aktywuujacy animacjie bieguPRZY KOLIZJI Z czyms- czyli z TILEM
         self.experience = 0
+        self.hero_bullet = Sprite(source='img/bullet.png', x=self.width)
+
         self.experience_level = int(self.experience//100)
         self.monster_touched = False #bool aktywujacy animacje ataku przy kolizji z potworem POWINNA NAZYWAC SIE HERO TOUCHING MONSTER
         self.hp = 130
@@ -30,7 +32,6 @@ class Hero(Sprite):
         elif self.velocity_y < 0:
             self.source = 'atlas://img/hero_anim/wing-attack1'
 
-        #NWM CZEMU TO JEST W UPDATE TAK NAPRAWDE
         #INSTRUKCJA WARUNKOWA AKTYWUJACA ANIMACJE BIEGU, ITERUJAC PRZEZ NIA.
         if self.running:
             self.touch_duration += 1
@@ -46,5 +47,18 @@ class Hero(Sprite):
 
     def on_touch_down(self, *ignore):#tu jest metoda ktora sprawia ze gdy dotkniemy ekranu
         self.velocity_y = 5.5#to velocity_y sie zwieksza i skaczemy
-        self.x += self.charge_power
+        self.x += self.charge_power/100
         self.source =  'atlas://img/hero_anim/wing-attack4'#tu tez jest warunkowana pojdydncza animacja
+
+
+
+
+
+
+'''
+class Melee_Weapon(Sprite):
+    def __init__(self, pos): #przywoluje w konstruktorze pozycje
+        self.
+'''
+
+

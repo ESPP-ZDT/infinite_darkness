@@ -13,6 +13,7 @@ from background import *
 from monsters import *
 from hero import *
 from potions import *
+from melee_weapons import *
 from kivy.properties import ObjectProperty, NumericProperty, ListProperty
 
 sfx_hit = SoundLoader.load('img/id laugh 1.wav')
@@ -31,29 +32,30 @@ class Menu(Widget):
 class Game(Widget):
     def __init__(self):#overriduje game
         super(Game ,self).__init__()#overriduje game
-        self.enemies =[]
+        self.enemies =[]#lista zawierajaca potwory[NA TYM I TYM POZIOMIE NP]
         self.tiles = [] #lista zawierajaca tile
-        self.hearts = []
+        self.hearts = []#lista zawierajaca health boosty
         self.charge_boosts = []
+        self.bullets = []
         self.l2tiles =[]
+        #self.bullets =[] lista odpowiadajaca za wyswietlanie z listy odpowiedniej broni - w dalszym rozrachunku.
         self.game_event_counter = 0 #int liczacy czas w grze
 
         self.game_over = False
-        self.background = Background(source='img/tile 3.png')# przywoluje background, przypisuje do zmiennej
+        self.background = Background(source='img/1.png')# przywoluje background, przypisuje do zmiennej
         self.size = self.background.size #ustala size gry na size tilea
         self.add_widget(self.background)#wyswietla- jak tutaj na dole z tamtymi
 
         self.hero = Hero(pos= (100, self.height/2))#przywoluje i pozycjonuje bohatera na srodku
         self.add_widget(self.hero)#wyswietla sprite bohatera.
-
-
-
+        #self.weapon = Weapon(pos = (self.hero.x +5, self.hero.y))#
+        #self.add_widget(self.weapon)
 
         self.asc_tiles = Asc_Tiles(pos=(rnd.randint(0,1000), rnd.randint(0,100)),size = self.size)#blituje tilesy, musze sprobowac bardziej to zrozumiec
         self.add_widget(self.asc_tiles)#blituje te poruszajace sie do gory tilesy
         self.tile_1 = Tile_1(source='img/i d tile 1.png')#dodaje fat tile,
         self.add_widget(self.tile_1)#i wyswietla
-
+    
 
         self.tile_2 = Tile_2(source='img/id tile 4.png')  # dodaje skinny tile,
         self.add_widget(self.tile_2)  # i wyswietla
@@ -67,6 +69,22 @@ class Game(Widget):
         self.add_widget(self.right_death)  # blituje go po prawej stronie
         self.floor = Floor_Tile(source='img/tile.png')  # dodaje podloge
 
+
+        for w in self.enemies:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
+            self.add_widget(w)
+
+        for h in self.hearts:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN, MUSI BYC
+            self.add_widget(h)
+
+        for b in self.charge_boosts:
+            self.add_widget(b)
+
+        for t in self.l2tiles:
+            self.add_widget(t)
+
+        for b in self.bullets:
+            self.add_widget(b)
+
         self.add_widget(self.floor)  # i wyswietla
         self.enemies.append(Treeman(pos=(rnd.randint(500, 510), rnd.randint(660, 661)))) #to DODAJE TILE DO LISTY
         self.enemies.append(Elephant(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
@@ -75,17 +93,7 @@ class Game(Widget):
 
 
         #self.enemies+=[Elephant(pos=(rnd.randint(200, 810), rnd.randint(660, 669))) for i in range(10)]
-        for w in self.enemies:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
-            self.add_widget(w)
 
-        for h in self.hearts:#forloop ktory appenduje widzety ktore zostaly dodane w inicie A TO ITERUJE PRZEZ NIA I WRZUCA JE NA EKRAN
-            self.add_widget(h)
-
-        for b in self.charge_boosts:
-            self.add_widget(b)
-
-        for t in self.l2tiles:
-            self.add_widget(t)
         #self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(660, 661)))
         #self.add_widget(self.treeman)
         #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
@@ -93,7 +101,7 @@ class Game(Widget):
         #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
         self.sfx_hit = SoundLoader.load('img/random.wav')
         self.game_over = False
-        self.hplabel = Label(center_x=self.center_x, top=self.top - 200, text="0")
+        self.hplabel = Label(center_x=self.center_x-100, top=self.top - 200, text="0")
         self.add_widget(self.hplabel)
         self.hero_explabel = Label(center_x=self.center_x + 200, top=self.top - 200, text="0")
         self.add_widget(self.hero_explabel)
@@ -120,6 +128,7 @@ class Game(Widget):
 
         self.background.update()  # updateuje background- kaze mu wykonywac poruszanie
         self.hero.update()  # updateuje bohaterac
+        #self.weapon.update()
 
         self.right_death.update()  # updateuje smierc z prawej strony
         self.right_dark.update()  # updateuje erasera
@@ -146,14 +155,22 @@ class Game(Widget):
 
         for tile in self.l2tiles:
             tile.update()
+        
+        for bullet in self.bullets:
+            bullet.update()
 
+        if self.hero.experience >= 100:
+            if (self.game_event_counter % 20) == 0: #ten INT DO MODULO TO MOZE BYC ZMIENNA!!!!! BRONI - JEJ CZESTOTLIWOSC
+                nazwa = Weapon(pos= (self.hero.x,self.hero.y))
+                self.bullets.append(nazwa)
+                self.add_widget(nazwa)
 
         if (self.game_event_counter%200) == 0:
             nazwa = Treeman(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
             self.enemies.append(nazwa)
             self.add_widget(nazwa)
 
-        if (self.game_event_counter % 1000) == 0:
+        if (self.game_event_counter % 90) == 0:
             nazwa = Healing_Heart(pos=(rnd.randint(0, 1000), rnd.randint(0, 1000)))
             self.hearts.append(nazwa)
             self.add_widget(nazwa)
@@ -168,11 +185,14 @@ class Game(Widget):
             self.enemies.append(nazwa)
             self.add_widget(nazwa)
 
-        if (self.game_event_counter%300) == 0 and self.hero.experience >= 200:
-            nazwa = L2Tile(pos=(rnd.randint(0,30),rnd.randint(0, 1000)))
-            self.l2tiles.append(nazwa)
-            self.add_widget(nazwa)
 
+
+        #moze by tak wprowadzic caly level ze
+        if self.game_event_counter >= 1000 and  self.game_event_counter <= 6000:
+            if (self.game_event_counter % 300) == 0 and self.hero.experience >= 200:
+                nazwa = L2Tile(pos=(rnd.randint(0, 30), rnd.randint(0, 1000)))
+                self.l2tiles.append(nazwa)
+                self.add_widget(nazwa)
 
 
 
@@ -210,6 +230,15 @@ class Game(Widget):
                 self.hero.y = tile.top  # uklada bohatera na gorze tila
                  # przesuwa bohatera
 
+        for weapon in self.bullets:
+            for enemy in self.enemies:
+                if weapon.collide_widget(enemy):
+                    enemy.on_hit(weapon)
+
+        for weapon in self.bullets:
+            if weapon.x >= 1000:
+                self.bullets.remove(weapon) #TUTAJ ZASIEG BRONI MOZESZ ZMIENIAC, CHYBA JEDNAK NIE
+
 
 
 
@@ -218,14 +247,14 @@ class Game(Widget):
         self.hero.monster_touched = False  # wylacza animacje ataku
         for enemy in self.enemies:
             if self.asc_tile.collide_widget(enemy):  # przesuwa treemana przy kolizji z asctilem
-                enemy.x += 5
+                enemy.on_basic_tile_touch()
                 enemy.floorcoll = True
             else:
                 enemy.floorcoll = False
             if self.tile_1.collide_widget(enemy):  # jesli treeman dotyka tila 1 czyli tego na dole
-                enemy.x += 5  # przesuwa w prawo
+                enemy.on_basic_tile_touch()  # przesuwa w prawo
             if self.tile_2.collide_widget(enemy):  # jesli treeman dotyka tila 2 czyli tego nagorze
-                enemy.x += -5  # przesuwa w lewo
+                enemy.on_basic_tile_touch() # przesuwa w lewo
             #OOO ELEPHANT TO MA MIEC INNE OBRAZENIA I W OGOLE!
             if self.hero.collide_widget(enemy):  # jesli bohater ma kolizje z treemanem
                 enemy.on_hit(self.hero)#TUTAJ ZASZLY ZMIANY, ZOSTALO PRZENIESIONE DO POTWOROW

@@ -1,5 +1,27 @@
+to jak teraz zaimplementowalem weapon - czyli zrobilem klase, z imagem, i takie tam, to sprawia ze bron nie porusza sie wraz z bohaterem, tylko pozostaje w jego pierwotnym miejscu
+
+stworzylem klase, i w inicie zrobilem jego... ALE ZARAZ... jednak wrzucenie linijki z updatem magicznie nie polaczy mojego modulu wraz z bohaterem - przyjrzec se jak wyglada
+interakcja z modulami w updacie  pomiedzy potworem a wojownikiem.
+czyli tak
+zrobilem klase dodalem obrzek, i wrzucilem go jak herosa i chuj z tego wyszedl, ale no git
+
+pas transmisyjny
+podnoszenie przedmiotow i spawnowanie ich po smierci potwor i zeby ona sie pojawiala el nie zawsze tylko zeby miala szanse sie zespawnowac z danego potwora
+
+DALEKO IDACY POWMYSL
+CO JESLI PRZY KOLIZJI I PRZESUAWNAIU SIE WRAZ Z PASEM TRANSMISYJNYM
 
 
+
+
+
+kosmaci kosmici smiechu
+
+POUSTAWIAC ODPOWIEDNIOWARSTWY TILI, ICE TILE ZA NA WIRZCHU
+
+
+jesli trafiasz przeciwnika strzlem on sie w ciebie wpierdala
+jesli zprzeciwnik jest w jakiejstam odleglosci od Ciebie to sie w CIebie wpierdala
 
 
 STWORZYC OBIEKT KTORY PRZY KOLIZJI Z BOHATEREM BEDZIE DODAWAC MU HP I #####################NAJLEPIEJ ZEBY SIE SPAWNOWAL JAK PRZECIWNIK UMRZE##########
@@ -22,6 +44,17 @@ co jakby ELITARNE potwory spawnowaly by sie w grupach,
   z jednej z czterech czesci na ekranie,
   zeby wleciec na ekran.
 
+FRAKCJE :NEUTRALE
+TREEMAN
+
+
+KROMKARZ
+
+
+SZATANSKA PLECIONKA 150TYS HP OGOLNIE BEDZIE W CHUJ KOZAKIEM - JAK NIE UNIKNESZ PRZED JEGO SUPERSTRZALEM TO UCINA cI HP NIM TO
+RAZ NA JAKIS CZAS BY TAK ATAKOWAL, CZYLI CHYBA MUSIALBY MIEC WLASNY ZEGAREK
+
+KAZDY POTWOR MA SWOJ ZEGAREK STRZALU
 
 
 ZNALEZC PRZYROWNANIA DO SYTUACJI Z TEGO TEKSTU I ZREALIZOWAC NIEZREALIZOWAANE
