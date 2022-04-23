@@ -15,6 +15,7 @@ CO JESLI PRZY KOLIZJI I PRZESUAWNAIU SIE WRAZ Z PASEM TRANSMISYJNYM
 
 
 
+
 kosmaci kosmici smiechu
 
 POUSTAWIAC ODPOWIEDNIOWARSTWY TILI, ICE TILE ZA NA WIRZCHU
@@ -26,7 +27,13 @@ jesli zprzeciwnik jest w jakiejstam odleglosci od Ciebie to sie w CIebie wpierda
 
 STWORZYC OBIEKT KTORY PRZY KOLIZJI Z BOHATEREM BEDZIE DODAWAC MU HP I #####################NAJLEPIEJ ZEBY SIE SPAWNOWAL JAK PRZECIWNIK UMRZE##########
 
-DODAC GOWNANA BRON POCISKOWA, KTORA BEDZE SIE SZYBKO KONCZYC
+DODAC GOWNANA BRON POCISKOWA, KTORA BEDZE SIE SZYBKO KONCZYC 50% done - jakis rodzaj broni do rzucania z ograniczona iloscia bylaby ciekawym dodatkiem do gry, a to tylko kwestia jednego z
+rodzajow interpretacji zmiennych zaimplementowanych w mechanice broni - wiec byloby git
+
+
+trzeba pamietac o tej ilosci iteracji broni, i takie tam, a poza tym myslec o tym czy da sie w jakis sposob dorzucic jakies rzeczy z update do klasy broni.
+pozatym pametac o tmy ze chce zrobic liste broni, a takze zeby miala szanse wypasc z potworow
+
 
 DODAC SWIATYNIE LECZENIA
 
@@ -36,8 +43,23 @@ MUSZE PAMIETAC ZE NA TILU TYPE WIDGET ANIMACJA NIE DZIALA
 
 WYSOKOSC SKOKU jako ZMIENNA
 
+
 zrobic zeby pojawialy sie strzalki ktore beda zmieniac charge power w druga strone
 
+co jakbby wprowadzic timer
+i rozn lementy dodawac w okreslonym czasie
+albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
+ albo raz na jakis czas jakas rzecz sie zdarza,
+albo raz na jaks czas rzecz me szanse sie wydarzyc.
+
+
+
+co jakby potwory spawnowaly by sie w grupach,
+ od dwoch do kilku,
+ raz na jakis czas,
+  z jednej z czterech czesci na ekranie,
+  zeby wleciec na ekran.
+TA SAMA MYSL!!!!!!!!!!!
 co jakby ELITARNE potwory spawnowaly by sie w grupach,
  od dwoch do kilku,
  raz na jakis czasRZADKO,
@@ -59,25 +81,12 @@ KAZDY POTWOR MA SWOJ ZEGAREK STRZALU
 
 ZNALEZC PRZYROWNANIA DO SYTUACJI Z TEGO TEKSTU I ZREALIZOWAC NIEZREALIZOWAANE
 
-co jakbby wprowadzic timer
-i rozn lementy dodawac w okreslonym czasie
-albo w okreslonym czasie moze sie zdarzyc jakas rzecz,
- albo raz na jakis czas jakas rzecz sie zdarza,
-albo raz na jaks czas rzecz me szanse sie wydarzyc.
+
 
 
 WAZNE ENDGAMOWE RZECZY
 POZYCJONOWANE
 
-
-co jakby pomoca kivy lnaguage zorbic
-<Hero>
-    canvas:
-        Rectangle:(Picture?)
-
-    Bron:  ktora bylaby podklasa  Sprajta
-    source:'costam"
-    pos: root.x +50, root.y.5
 
 
 zrobic takie strzalki ze jak je dotkniesz to Cie albo bardziej do przodu albo bardziej do tylu przesuwa-
@@ -126,11 +135,7 @@ WYSOKOSC SKOKU jako ZMIENNA
 PRZESUNIECIE W PRAWO ALBO PRZESUNIECIE W LEWO
 REGENERACJA ZDROWIA LUB ZWIEKSOZNE ZDROWIE
 
-co jakby potwory spawnowaly by sie w grupach,
- od dwoch do kilku,
- raz na jakis czas,
-  z jednej z czterech czesci na ekranie,
-  zeby wleciec na ekran.
+
 
 
 
@@ -139,15 +144,7 @@ ULTIMATE TIME FORMULA -WPROWADZIC PRZYKALDY DO FORMULY
 
 
 
-walka polegala by na
-ROZKMIN WALKE NA PODSTAWIE STATYSTYK
-obecnie damage jest sila
-jest zycie
 
-moze tworztc na hero pozycji +10 bron np moze ten topor
-i pojawialby sie i colidoq+wal tylko przez ta sekundke
-
-i dodac potworowi kolizje z ta bronia jakby zbierala w pipke
 
 
 

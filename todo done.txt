@@ -1,4 +1,30 @@
 
+walka polegala by na
+ROZKMIN WALKE NA PODSTAWIE STATYSTYK
+obecnie damage jest sila
+jest zycie
+
+moze tworztc na hero pozycji +10 bron np moze ten topor
+i pojawialby sie i colidoq+wal tylko przez ta sekundke
+
+i dodac potworowi kolizje z ta bronia jakby zbierala w pipke
+
+
+
+
+co jakby pomoca kivy lnaguage zorbic
+<Hero>
+    canvas:
+        Rectangle:(Picture?)
+
+    Bron:  ktora bylaby podklasa  Sprajta
+    source:'costam"
+    pos: root.x +50, root.y.5
+
+
+brawo. udalo CI sie zrobic bron.
+
+
 DONE:
 01;53
 wystarczy dodac animacje do treemana, potweakowac przy implementacji animacji ruchu, potem zaimplementowac gdzies hp,
