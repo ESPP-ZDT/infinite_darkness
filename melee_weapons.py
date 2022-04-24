@@ -1,26 +1,22 @@
 from sprite import *
 from kivy.clock import Clock
 from random import *
-
+#SMIESZNA SPRAWA, JA TYLE EDYTOWALEM TEST WEAPON, A TO WEAPON DZIALA
 class Test_Weapon(Sprite):
     def __init__(self, pos):  # przywoluje w konstruktorze pozycje
         super(Test_Weapon, self).__init__(source='img/sky sword.png')
         self.activated = False
-        self.damage = randrange(10, 15)
+        self.damage = randrange(1, 5)
         self.bullets =[]
         self.shoot = False
 
         for t in self.bullets:
             self.add_widget(t)
 
-        #self.y = 10  # nadaje losowa pozycje y treemana
-
     def update(self):
     # apdejt klasy
         for bullet in self.bullets:
             bullet.update()
-
-        #if self.activated == True:
 
 
     def weapon_equipped(self,owner):
@@ -122,6 +118,7 @@ i potem moze bym zrobil m
 
 
 '''
+
 class Weapon(Sprite):
     def __init__(self, pos):  # przywoluje w konstruktorze pozycje
         super(Weapon, self).__init__(source='img/csharp bullet.png', pos=pos)
@@ -130,6 +127,7 @@ class Weapon(Sprite):
         self.shoot = False
         self.sila = 12
         self.charge_power = 3
+
 
     #def weapon_equipped(self, owner):
         #if owner.experience >= 100:
@@ -141,6 +139,9 @@ class Weapon(Sprite):
 
     def update(self):  # apdejt klasy
         self.x += 10
+        if self.x >= 990:
+            self.opacity = 0
+            self.source =''
 
 
         # tutaj wpisujesz ify lub elify do anumacji ruchu? ktora musialaby sie poprostu moze tutaj zmieniac?

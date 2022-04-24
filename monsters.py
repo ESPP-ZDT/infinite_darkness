@@ -19,12 +19,10 @@ class Treeman(Sprite):
         self.dead = False  # bool odpowiadajacy za odpalenie animacji smierci po smierci treemana
         self.expdrop = False  # bool odpowiadajacy za dawanie expa bohaterowi jak treeman hp  = 0
         self.monster_touch = 0  # liczy dotkniecie potwora
-        #self.y = 10  # nadaje losowa pozycje y treemana
         self.y_border_touched = False #bool obslugujacy dolna i gorna granice
         self.x_border_touched = False #bool obslugujacy prawa i lewa granice
-        self.hp = 100
+        self.hp = 1000
         self.sila = 2
-        #Clock.schedule_interval(self.update, .0 / 60.0)
 
     def on_hit(self,hitter):#modul odpowiadajacy za aktywacje animacji, przesuniecie potwora oraz obliczanie obrazen, do zastosowania przy kolizji z bohaterem
         hitter.monster_touched = True  # aktywuje animacje ataku
@@ -39,18 +37,17 @@ class Treeman(Sprite):
         self.x += 5
 
     def update(self):  # apdejt klasy
-
-        # tutaj wpisujesz ify lub elify do anumacji ruchu? ktora musialaby sie poprostu moze tutaj zmieniac?
         if self.collision:  # and self.velocity_y < -5: #jesli -kolizja z treemanem
             # self.touch_duration += 1# animacja
             self.monster_touch += 2  # dodaje +2 do
-            self.source = self.attack_animation[
-                min(len(self.attack_animation) - 1, self.monster_touch // 10)]  # odtwarza animacje ataku
+            self.source = self.death_animation[
+                min(len(self.death_animation) - 1, self.monster_touch // 10)]  # odtwarza animacje ataku
             # elif self.treeman_floorcoll:
             self.monster_touch += 2  # dodaje +2 do
             # self.source = self.run_animation[min(len(self.run_animation) - 1, self.monster_touch // 3)]
+
         else:
-            self.source = self.run_animation[min(len(self.run_animation) - 1, self.monster_touch // 10)]
+            self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]#to zamiast odpalac animacje, ustawia pierwsza klatke animacji ruchu.
             self.monster_touch = 0  # resetuje dotyk
         if self.hp <= 10:
             self.source = self.death_animation[min(len(self.death_animation) - 1, self.monster_touch // 10)]
@@ -115,7 +112,7 @@ class Elephant(Sprite):
         #self.y = 10  # nadaje losowa pozycje y treemana
         self.y_border_touched = False #bool obslugujacy dolna i gorna granice
         self.x_border_touched = False #bool obslugujacy prawa i lewa granice
-        self.hp = 100
+        self.hp = 1000
         self.sila = 1
         #Clock.schedule_interval(self.update, .0 / 60.0)
 

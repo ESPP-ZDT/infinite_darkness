@@ -22,7 +22,7 @@ class Menu(Widget):
         super(Menu,self).__init__()
         self.add_widget(Sprite(source='img/the angel.png'))
         self.size = self.children[0].size
-
+#CO JAKBY TUTAJ ZROBIC LISTKE SOBIE, Z ROZNYMI OBRAZKAMI, I ONE BY SIE WYSWIETLALY ROZNE?
     def on_touch_down(self, *ignore):
         parent = self.parent
         parent.remove_widget(self)
@@ -36,27 +36,19 @@ class Game(Widget):
         self.tiles = [] #lista zawierajaca tile
         self.hearts = []#lista zawierajaca health boosty
         self.charge_boosts = []
-        self.bullets = []
+        self.bullets = []#lista odpowiadajaca za wyswietlanie z listy odpowiedniej broni - w dalszym rozrachunku.
         self.l2tiles =[]
-        #self.bullets =[] lista odpowiadajaca za wyswietlanie z listy odpowiedniej broni - w dalszym rozrachunku.
         self.game_event_counter = 0 #int liczacy czas w grze
-
         self.game_over = False
-        self.background = Background(source='img/1.png')# przywoluje background, przypisuje do zmiennej
+        self.background = Background()# przywoluje background, przypisuje do zmiennej
         self.size = self.background.size #ustala size gry na size tilea
         self.add_widget(self.background)#wyswietla- jak tutaj na dole z tamtymi
-
         self.hero = Hero(pos= (100, self.height/2))#przywoluje i pozycjonuje bohatera na srodku
         self.add_widget(self.hero)#wyswietla sprite bohatera.
-        #self.weapon = Weapon(pos = (self.hero.x +5, self.hero.y))#
-        #self.add_widget(self.weapon)
-
         self.asc_tiles = Asc_Tiles(pos=(rnd.randint(0,1000), rnd.randint(0,100)),size = self.size)#blituje tilesy, musze sprobowac bardziej to zrozumiec
         self.add_widget(self.asc_tiles)#blituje te poruszajace sie do gory tilesy
         self.tile_1 = Tile_1(source='img/i d tile 1.png')#dodaje fat tile,
         self.add_widget(self.tile_1)#i wyswietla
-    
-
         self.tile_2 = Tile_2(source='img/id tile 4.png')  # dodaje skinny tile,
         self.add_widget(self.tile_2)  # i wyswietla
         self.left_dark = Left_Darkness(source='img/the eraser.png')  # sprowadza erasera
@@ -89,16 +81,6 @@ class Game(Widget):
         self.enemies.append(Treeman(pos=(rnd.randint(500, 510), rnd.randint(660, 661)))) #to DODAJE TILE DO LISTY
         self.enemies.append(Elephant(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
         self.hearts.append(Healing_Heart(pos=(rnd.randint(500, 510), rnd.randint(660, 661))))
-
-
-
-        #self.enemies+=[Elephant(pos=(rnd.randint(200, 810), rnd.randint(660, 669))) for i in range(10)]
-
-        #self.treeman = Treeman(pos=(rnd.randint(-100, 0), rnd.randint(660, 661)))
-        #self.add_widget(self.treeman)
-        #self.elephant = Elephant(pos=(rnd.randint(100, 110), rnd.randint(660, 661)))
-        #self.add_widget(self.elephant)
-        #self.add_widget(Sprite(source='img/bladecrab.png'))#przywoluje craba wyswietla
         self.sfx_hit = SoundLoader.load('img/random.wav')
         self.game_over = False
         self.hplabel = Label(center_x=self.center_x-100, top=self.top - 200, text="0")
@@ -234,10 +216,12 @@ class Game(Widget):
             for enemy in self.enemies:
                 if weapon.collide_widget(enemy):
                     enemy.on_hit(weapon)
-
-        for weapon in self.bullets:
-            if weapon.x >= 1000:
-                self.bullets.remove(weapon) #TUTAJ ZASIEG BRONI MOZESZ ZMIENIAC, CHYBA JEDNAK NIE
+                    #self.bullets.remove(weapon)
+        #USUWANIE TEGO SPRAJTA POWINNO BYC W JEGO KLASIE
+        #for weapon in self.bullets:
+            #if weapon.x >= 900:
+                #self.bullets.remove(weapon)
+                #ZAMIAST USUWAC, PRZESTAJE SIE RUSZAC
 
 
 
