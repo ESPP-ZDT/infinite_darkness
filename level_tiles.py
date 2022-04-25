@@ -1,12 +1,10 @@
 from sprite import *
 from kivy.clock import Clock
 from random import *
-
+#O, PROSZE, TUTAJ JEST TILE ZE ZSUPEROWANYM SOURCEM, TO POWINNO OCZYSCIC KOD TILI
 class L2Tile(Sprite):
-    def __init__(self, pos):  # przywoluje w konstruktorze pozycje
+    def __init__(self, pos):  # przywoluje w konstruktorze pozycje,CHYBA NIE JEST WYKORZYSTYWANA
         super(L2Tile, self).__init__(source='img/id ltile 2.png')
-        self.y_border_touched = False #bool obslugujacy dolna i gorna granice
-        self.x_border_touched = False #bool obslugujacy prawa i lewa granice
 
     def update(self):  # apdejt klasy
         self.x -= 2

@@ -1,5 +1,23 @@
+
+
+   PEWNE, JEDNORAZOWE AKCJE
+1.przyjrzec sie konstrukcji klasy l2tile i zastosowac taki sam myk w kontekscie klas pojedynczych tilii.
+2.sprobowac przyjrzec sie aktywacji animacji movementu potwora w tilach, i sprobowac odpalic ja w stosunku do tili pojedynczych. powinno dzialac
+
+
+UWAGI
+
+TRUDNIEJSZE PROBLEMY, nie natychmiastowe
+1.animacja ataku potwora przy kolizji z bronia.
+
+
+MEGA TRUDNE RZECZY:
+
+
 ROBIENIE WSZYSTKIEGO BEZPOSREDNIO W KLASACH:
 tile = moze da sie przeniesc ich source do klas? da sie przeniesc source do backgroundu, wiec tak.
+przyjrzec sie w jaki wplyw na wyglad gry ma ulozenie danych rzeczy w update.
+#instrukcja warunkowa odpalajaca strzelanie z broni - do przerobienia na modul, w klasie broni, z zupelnie innym warunkowaniem - ale to po stworzeniu zebrania dropa i guess
 
 
 

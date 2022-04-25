@@ -1,7 +1,8 @@
 import random as rnd
 from sprite import *
 from kivy.uix.widget import Widget
-
+#background w troche inny sposob przypisuje obrazek - uzywa do tego zmiennej w klasie - chcialbym moze, zeby tutaj w tych tilach tez zrobic listy, zeby zamiast dokladac
+#nowe klasy z tileami, robic listy i zmieniac tile na podstawie booli, albo cos. i z kazdym boolem poruszanie byloby inne, i takie tam - mozna sie pobawic.
 
 class Tile_1(Sprite): #fat small tile
     def update(self): #updateuje klase
@@ -10,8 +11,8 @@ class Tile_1(Sprite): #fat small tile
             self.x = 1000#scrollujego
             self.y = rnd.randint(120, 200)
             self.x = rnd.randint(1000, 1950)#jak sie przesuwa pojawia sie z drugiej strony w innym y
-
-
+#jak narazie postawowy tile dziala wlasnie tak - ma tylko update, poruszanie wraz z granica - source jest nadawane w game. mozna sprobowac podmienic, dodac supera czy cos. przyrownac
+#do potwora, tam zawsze sa jakies rozwiazania.
 class Tile_2(Sprite): #slim long tile
     def update(self): #updateuje klase
         self.x -= 10 #porusza podloga
@@ -20,13 +21,14 @@ class Tile_2(Sprite): #slim long tile
             self.y = rnd.randint(600, 900)#jak sie przesuwa pojawia sie z drugiej strony w innym y
             self.x = rnd.randint(1000, 1300)
 
-
+#tylko te tile dalej sa dla mnie wielka tajeminica, moze pora obejrzec richarda jonesa ten fragment setke razy, zeby sie tego nauczyc - i moc zastosowac to jakie timed tila, albo cos
+#cos ciekawego.
 class Asc_Tile(Widget):#Tworzy tile, te takie kwadraciki
     def __init__(self, pos): #w konstruktorza prosi o pozycje
         super(Asc_Tile,self).__init__(pos=pos)#superuje i pozycje tez
         self.asc_tile_1 = Sprite(source = 'img/id tile 2.png')#sprowadza obrazek  podlogi
         self.add_widget(self.asc_tile_1)#adduje tile jako widzet
-        self.width = self.asc_tile_1.width# ustawia szerokosc?? jakas jako szerokosc tila a raczej odw
+        self.width = self.asc_tile_1.width# ustawia szerokosc?? jakas jako szerokosc tila a raczej odw, wykorzystane w oryginalnym kodzie, a tutaj nie
 
     def update(self):#apdejt
         #self.left_spike.y += 2

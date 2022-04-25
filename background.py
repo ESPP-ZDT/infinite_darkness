@@ -1,10 +1,12 @@
 from kivy.uix.widget import Widget
 from sprite import *
 #zmeiniajacy sie background - skoro juz ustalilem ze moge tylko sie odwolac do klasy w gamie zeby ja dodac jako widzet, a sourca sobie zrobic tutaj, to chcialbym
-#zrobic tutaj liste tel - przez ktore w jakichs sposob bedzie sie iterowac na takiej zasadzie jak w tej klasie.
+#zrobic tutaj liste tel - przez ktore w jakichs sposob bedzie sie iterowac na takiej zasadzie jak w tej klasie. oczywiscie dalej bede musial rozkminic w jaki sposob bedzie
+#aktywowana zmiana poziomu, ale tutaj to chyba bedzie mozna zrobic na boolu.
 class Background(Widget):#tworzy widzet
     def __init__(self):#przywoluje source jako cos gddzie bedzie wstawiany img lub atlas
         super(Background,self).__init__()#superuje ja zeby mozna bylo to uzyc w innych klasach(?)
+        self.bacgrounds = [] #lista, ktora zawieralaby te rozne backgroundy.
         self.image = Sprite(source = 'img/1.png')#tworzy zmienna obrazu ktory jest subklasa sprajta
         self.add_widget(self.image)#dodaje obraz jako widzet(?)
         self.size = self.image.size#ustala rozmiar widzeta jako rozmiar obrazuCHYBA

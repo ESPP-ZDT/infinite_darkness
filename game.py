@@ -43,7 +43,7 @@ class Game(Widget):
         self.background = Background()# przywoluje background, przypisuje do zmiennej
         self.size = self.background.size #ustala size gry na size tilea
         self.add_widget(self.background)#wyswietla- jak tutaj na dole z tamtymi
-        self.hero = Hero(pos= (100, self.height/2))#przywoluje i pozycjonuje bohatera na srodku
+        self.hero = Hero(pos= (100, self.height/2))#przywoluje i pozycjonuje bohatera na srodku - czy musi tutaj?
         self.add_widget(self.hero)#wyswietla sprite bohatera.
         self.asc_tiles = Asc_Tiles(pos=(rnd.randint(0,1000), rnd.randint(0,100)),size = self.size)#blituje tilesy, musze sprobowac bardziej to zrozumiec
         self.add_widget(self.asc_tiles)#blituje te poruszajace sie do gory tilesy
@@ -97,27 +97,19 @@ class Game(Widget):
         if self.game_over:
             self.game_event_counter = 0
             return
-        #tutaj dodam nowe tile
 
-        self.game_event_counter += 1
-        #coo 200 tickow dodaje treemana
+        self.game_event_counter += 1 #ZACZYNA DODAWAC DO TIMERA- TO POZWALA NA WARUNKOWANIE EVENTOW W GRZE
 
-
-
-        #iterujesz zegar na rozne obiekty osobno kurwo
         self.hplabel.text = 'hp' + str(self.hero.hp)
         self.hero_explabel.text = 'exp' + str(self.hero.experience)
 
         self.background.update()  # updateuje background- kaze mu wykonywac poruszanie
         self.hero.update()  # updateuje bohaterac
-        #self.weapon.update()
-
-        self.right_death.update()  # updateuje smierc z prawej strony
+        self.right_death.update()  # updateuje sMierc z prawej strony
         self.right_dark.update()  # updateuje erasera
         self.tile_2.update()  # updateuje gruba tile
         self.floor.update()  # updateuje podloge
         self.tile_1.update()  # updateuje gruba tile
-
         self.left_death.update()  # updateuje smierc z lewej strony
         self.left_dark.update()  # updateuje erasera
 
@@ -140,10 +132,10 @@ class Game(Widget):
         
         for bullet in self.bullets:
             bullet.update()
-
+        #instrukcja warunkowa odpalajaca strzelanie z broni - do przerobienia na modul, w klasie broni, z zupelnie innym warunkowaniem - ale to po stworzeniu zebrania dropa i guess
         if self.hero.experience >= 100:
-            if (self.game_event_counter % 20) == 0: #ten INT DO MODULO TO MOZE BYC ZMIENNA!!!!! BRONI - JEJ CZESTOTLIWOSC
-                nazwa = Weapon(pos= (self.hero.x,self.hero.y))
+            if (self.game_event_counter % 20) == 0: #ten INT DO MODULO TO MOZE BYC ZMIENNA!!!!! BRONI - JEJ CZESTOTLIWOSC strzelania
+                nazwa = Weapon(pos= (self.hero.x,self.hero.y)) #pos bohatera musialbym znalezc albo tutaj, albo odwolujac sie do klasy bohatera w broni.
                 self.bullets.append(nazwa)
                 self.add_widget(nazwa)
 
@@ -171,8 +163,8 @@ class Game(Widget):
 
         #moze by tak wprowadzic caly level ze
         if self.game_event_counter >= 1000 and  self.game_event_counter <= 6000:
-            if (self.game_event_counter % 300) == 0 and self.hero.experience >= 200:
-                nazwa = L2Tile(pos=(rnd.randint(0, 30), rnd.randint(0, 1000)))
+            if (self.game_event_counter % 500) == 0 and self.hero.experience >= 200:
+                nazwa = L2Tile(pos=(rnd.randint(0, 900), rnd.randint(0, 1000)))
                 self.l2tiles.append(nazwa)
                 self.add_widget(nazwa)
 
@@ -181,15 +173,11 @@ class Game(Widget):
         self.asc_tiles.update(dt)#updateuje to ruszajace sie tilesy
         for self.asc_tile in self.asc_tiles.children:# iteruje przez liste
             if self.asc_tile.collide_widget(self.hero):#kolizja elementow listy tiki
-
                 self.hero.y = self.asc_tile.asc_tile_1.top#umiesc bohatera na gornej podlodze tile
                 self.hero.x += 5  # przesuwa bohatera w prawo
-                #self.hero.y += 10
                 self.hero.running = True#kaze animacji sie dziac, ale nie dziala
             else:
                 self.hero.running = False#
-
-
 
         print(self.game_event_counter)
 
@@ -232,7 +220,7 @@ class Game(Widget):
         for enemy in self.enemies:
             if self.asc_tile.collide_widget(enemy):  # przesuwa treemana przy kolizji z asctilem
                 enemy.on_basic_tile_touch()
-                enemy.floorcoll = True
+                enemy.floorcoll = True #powinno aktywowac animacje ruchu potwora? przy kolizji z tilem
             else:
                 enemy.floorcoll = False
             if self.tile_1.collide_widget(enemy):  # jesli treeman dotyka tila 1 czyli tego na dole
